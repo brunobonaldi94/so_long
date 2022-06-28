@@ -1,0 +1,7 @@
+/mlx_linux
+*.o
+so_long
+.vscode/
+*.a
+/ft_printf*
+assets/NinjaAdventure
