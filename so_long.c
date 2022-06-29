@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:36:33 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/27 23:31:02 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/29 05:09:32 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,29 @@ int	render_image(t_data *mlx, t_xmp_img *xmp_img)
 	return (0);
 }
 
+void	print_map2(t_map_dimensions *map_dimensions, int is_valid_map)
+{
+	int j = 0;
+	if (is_valid_map == FALSE)
+		return ;
+	while (j < map_dimensions->rows)
+	{
+		ft_printf("row:%d-%s\n", j, map_dimensions->map_matrix[j]);
+		j++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data				mlx;
+	t_map_dimensions	map_dimensions;
 	int					is_valid_map;
 	char				*file_path;
 
 	if (argc <= 1)
 		return (ERROR);
 	file_path = argv[1];
-	is_valid_map = read_map(file_path);
+	is_valid_map = read_map(file_path, &map_dimensions);
  	if (is_valid_map == FALSE)
 		return (ERROR);
 	mlx.mlx_ptr = mlx_init();

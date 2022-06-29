@@ -31,7 +31,8 @@ SRCS =	ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c 
+		ft_putnbr_fd.c \
+		ft_ptr_free.c
 
 SRCS_BONUS = 	ft_lstnew.c \
 				ft_lstadd_front.c \
@@ -77,7 +78,7 @@ INCLUDES = ./
 
 NAME_BONUS = libft_bonus.a
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rc
 RANLIB = ranlib

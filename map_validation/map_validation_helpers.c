@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/24 18:04:37 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/06/29 05:00:29 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	is_valid_map_component(int component)
 	return (FALSE);
 }
 
+void	init_map_dimensions(t_map_dimensions **map_dimensions)
+{
+	(*map_dimensions)->rows = 0;
+	(*map_dimensions)->columns = 0;
+	(*map_dimensions)->map_matrix = NULL;
+}
+
 void	init_map_components(t_valid_components *map_components)
 {
 	map_components->has_collectible = -1;
@@ -40,3 +47,10 @@ void	init_map_components(t_valid_components *map_components)
 	map_components->is_surrounded_by_wall = -1;
 	map_components->is_valid_map = -1;
  }
+
+void	assign_map_dimensions(t_map_dimensions **map_dimensions,
+			t_valid_components map_components)
+{
+	(*map_dimensions)->rows = map_components.map_dimensions.rows;
+	(*map_dimensions)->columns = map_components.map_dimensions.columns;
+}

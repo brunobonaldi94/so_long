@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/27 22:20:38 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/29 05:10:21 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,43 @@ void	debug(t_valid_components map_components, char *where)
 	ft_printf("\n%d-is_surrounded_by_wall;",map_components.is_surrounded_by_wall);
 	ft_printf("\n%d-is_valid_map;",map_components.is_valid_map);
 }
-void	print_map(t_valid_components *map_components)
+void	print_map(t_map_dimensions *map_dimensions, int is_valid_map)
 {
 	int j = 0;
-	if (map_components->is_valid_map == FALSE)
+	if (is_valid_map == FALSE)
 		return ;
-	while (j < map_components->map_dimensions.rows)
+	while (j < map_dimensions->rows)
 	{
-		ft_printf("row:%d-%s\n", j, map_components->map_dimensions.map_matrix[j]);
+		ft_printf("row:%d-%s\n", j, map_dimensions->map_matrix[j]);
 		j++;
 	}
 }
 //##################
-void	destroy_map_matrix(t_valid_components *map_components)
+void	destroy_map_matrix(t_map_dimensions **map_dimensions)
 {
 	int	row;
 
 	row = 0;
-	if (!map_components->map_dimensions.map_matrix)
+	if (!(*map_dimensions)->map_matrix)
 		return ;
-	while (row < map_components->map_dimensions.rows)
+	while (row < (*map_dimensions)->rows)
 	{
-		free(map_components->map_dimensions.map_matrix[row]);
+		free((*map_dimensions)->map_matrix[row]);
 		row++;
 	}
-	free(map_components->map_dimensions.map_matrix);
+	free((*map_dimensions)->map_matrix);
 }
 
-void	create_map_matrix(t_valid_components *map_components,
-			t_list *map_lines_list)
+void	create_map_matrix(t_map_dimensions **map_components,
+			t_list *map_lines_list, int is_valid_map)
 {
  	int					row;
  	t_map_dimensions	*current_map_dimension;
 	t_list				*tmp_map_lines_list;
 
-	if (map_components->is_valid_map == FALSE)
+	if (is_valid_map == FALSE)
 		return ;
- 	current_map_dimension = &map_components->map_dimensions;
+ 	current_map_dimension = *map_components;
 	row = 0;
  	current_map_dimension->map_matrix = 
 		(char **)malloc(sizeof(char *) * current_map_dimension->rows);
@@ -100,7 +100,8 @@ t_list	*read_map_from_file(char *file_path)
 	return (head_map);
 }
 
-int	read_map(char *file_path)
+int	read_map(char *file_path,
+	t_map_dimensions *map_dimensions)
 {
  	int		is_eof;
 	t_valid_components	map_components;
@@ -108,20 +109,22 @@ int	read_map(char *file_path)
 	t_list	*tmp_map_lines_list;
 
 	init_map_components(&map_components);
-	map_lines_list = read_map_from_file(file_path);
+ 	map_lines_list = read_map_from_file(file_path);
 	tmp_map_lines_list = map_lines_list;
 	is_eof = FALSE;
 	while (tmp_map_lines_list)
 	{
  		if (tmp_map_lines_list->next == NULL)
 			is_eof = TRUE;
-		check_map_validators(&map_components, 
+		check_map_validators(&map_components,
 			(char *)tmp_map_lines_list->content, is_eof);
 		tmp_map_lines_list = tmp_map_lines_list->next;
 	}
  	check_is_valid_map(&map_components);
-	create_map_matrix(&map_components, map_lines_list);
-	print_map(&map_components);
-	destroy_map_matrix(&map_components);
+	assign_map_dimensions(&map_dimensions, map_components);
+	create_map_matrix(&map_dimensions, map_lines_list,
+		map_components.is_valid_map);
+	print_map(map_dimensions, map_components.is_valid_map);
+	destroy_map_matrix(&map_dimensions);
  	return (map_components.is_valid_map);
 }

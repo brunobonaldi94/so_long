@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/25 00:35:16 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/06/29 05:04:47 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ typedef struct s_valid_components
 	int					is_valid_map;
 }	t_valid_components;
 
-int		read_map(char *file_path);
+int		read_map(char *file_path, t_map_dimensions *map_dimensions);
 void	init_map_components(t_valid_components *map_components);
+void	init_map_dimensions(t_map_dimensions **map_dimensions);
+void	assign_map_dimensions(t_map_dimensions **map_dimensions,
+			t_valid_components map_components);
 int		is_valid_map_component(int component);
 int		is_valid_component(int component);
 
