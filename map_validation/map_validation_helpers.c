@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 05:00:29 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/06/30 04:12:49 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ int	is_valid_component(int component)
 
 int	is_valid_map_component(int component)
 {
-	if (component == MAP_COLLECTIBLE_CHAR || component == MAP_EMPTY_SPACE_CHAR
+	if (component == MAP_COLLECTIBLE_CHAR || component == MAP_FLOOR_CHAR
 		|| component == MAP_EXIT_CHAR || component == MAP_PLAYER_CHAR
 		|| component == MAP_WALL_CHAR)
  		return (TRUE);
 	return (FALSE);
 }
 
-void	init_map_dimensions(t_map_dimensions **map_dimensions)
+void	map_dimensions_init(t_map_dimensions **map_dimensions)
 {
+	*map_dimensions = (t_map_dimensions* )malloc(sizeof(t_map_dimensions));
 	(*map_dimensions)->rows = 0;
 	(*map_dimensions)->columns = 0;
 	(*map_dimensions)->map_matrix = NULL;
 }
 
-void	init_map_components(t_valid_components *map_components)
+void	map_components_init(t_valid_components *map_components)
 {
 	map_components->has_collectible = -1;
 	map_components->has_exit = -1;

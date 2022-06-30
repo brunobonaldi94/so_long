@@ -1,11 +1,15 @@
 MAP_VALIDATION_PATH = ./map_validation
 EVENTS_HANDLER_PATH = ./events_handler
-UTILS_PATH = ./utils
+GAME_EXIT_PATH = ./game_exit
+MAP_RENDER_PATH = ./map_render
+IMAGE_RENDER_PATH = ./image_handler
 SRCS =	so_long.c \
 		$(addprefix $(MAP_VALIDATION_PATH)/,	map_validation.c map_validation_helpers.c \
 													map_validation_checkers.c) \
 		$(addprefix $(EVENTS_HANDLER_PATH)/, events_handler.c) \
-		$(addprefix $(UTILS_PATH)/, render.c)
+		$(addprefix $(MAP_RENDER_PATH)/, map_render.c) \
+		$(addprefix $(GAME_EXIT_PATH)/, game_exit.c) \
+		$(addprefix $(IMAGE_RENDER_PATH)/, image_handler.c)
 
 OBJS = $(SRCS:.c=.o)
 

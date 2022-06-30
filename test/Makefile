@@ -5,7 +5,7 @@ VALGRIND = valgrind -s --leak-check=full --show-leak-kinds=all --gen-suppression
 
 all:	$(NAME)
 
-MAP_FILE = ../maps/complex_map.ber
+MAP_FILE = ../assets/maps/complex_map.ber
 
 NORMINETTES_PATH = $(shell find ../ -maxdepth 1 -type d ! -path '../.*' ! -path '../' ! -path '../test' | grep -v mlx_linux | tr '\n' ' ')
 

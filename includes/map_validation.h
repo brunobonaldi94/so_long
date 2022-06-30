@@ -6,14 +6,14 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 05:04:47 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/06/30 04:12:49 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_VALIDATION_H
 # define MAP_VALIDATION_H
 
-# define MAP_EMPTY_SPACE_CHAR '0'
+# define MAP_FLOOR_CHAR '0'
 # define MAP_WALL_CHAR '1'
 # define MAP_COLLECTIBLE_CHAR 'C'
 # define MAP_EXIT_CHAR 'E'
@@ -39,9 +39,9 @@ typedef struct s_valid_components
 	int					is_valid_map;
 }	t_valid_components;
 
-int		read_map(char *file_path, t_map_dimensions *map_dimensions);
-void	init_map_components(t_valid_components *map_components);
-void	init_map_dimensions(t_map_dimensions **map_dimensions);
+t_map_dimensions	*read_map(char *map_path);
+void	map_components_init(t_valid_components *map_components);
+void	map_dimensions_init(t_map_dimensions **map_dimensions);
 void	assign_map_dimensions(t_map_dimensions **map_dimensions,
 			t_valid_components map_components);
 int		is_valid_map_component(int component);
@@ -56,4 +56,5 @@ void	check_is_rectangule(t_valid_components *map_components,
 			t_map_dimensions current_map_dimensions, int is_eof);
 void	check_minimal_components(t_valid_components *map_components,
 			char component);
+void	destroy_map_matrix(t_map_dimensions **map_dimensions);
 #endif //MAP_VALIDATION_H

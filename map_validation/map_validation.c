@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 05:10:21 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/06/30 03:37:05 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	destroy_map_matrix(t_map_dimensions **map_dimensions)
 		row++;
 	}
 	free((*map_dimensions)->map_matrix);
+	free(*map_dimensions);
 }
 
 void	create_map_matrix(t_map_dimensions **map_components,
@@ -100,16 +101,17 @@ t_list	*read_map_from_file(char *file_path)
 	return (head_map);
 }
 
-int	read_map(char *file_path,
-	t_map_dimensions *map_dimensions)
+t_map_dimensions	*read_map(char *map_path)
 {
  	int		is_eof;
 	t_valid_components	map_components;
+	t_map_dimensions	*map_dimensions;
 	t_list	*map_lines_list;
 	t_list	*tmp_map_lines_list;
 
-	init_map_components(&map_components);
- 	map_lines_list = read_map_from_file(file_path);
+	map_components_init(&map_components);
+	map_dimensions_init(&map_dimensions);
+ 	map_lines_list = read_map_from_file(map_path);
 	tmp_map_lines_list = map_lines_list;
 	is_eof = FALSE;
 	while (tmp_map_lines_list)
@@ -125,6 +127,6 @@ int	read_map(char *file_path,
 	create_map_matrix(&map_dimensions, map_lines_list,
 		map_components.is_valid_map);
 	print_map(map_dimensions, map_components.is_valid_map);
-	destroy_map_matrix(&map_dimensions);
- 	return (map_components.is_valid_map);
+	//destroy_map_matrix(&map_dimensions);
+ 	return (map_dimensions);
 }

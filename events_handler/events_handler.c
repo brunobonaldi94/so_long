@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/27 23:36:06 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/30 02:17:31 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ int	deal_key_press(int key, t_data *mlx)
 
 int deal_close(t_data *mlx)
 {
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img.mlx_img);
 	destroy_window(mlx);
 	destroy_display(mlx);
 	exit(0);
 	return (0);
 }
 
-void	handle_events(t_data *mlx, int (* render)(t_data *))
+void	handle_events(t_data *mlx)
 {
 	mlx_hook(mlx->win_ptr, KEY_PRESS_EVENT, (1L<<0), &deal_key_press, mlx);
-	mlx_hook(mlx->win_ptr, DESTROY_NOTIFY_EVENT, (1L<<17), &deal_close, mlx);	
-	mlx_loop_hook(mlx->mlx_ptr, render, mlx);
+	mlx_hook(mlx->win_ptr, DESTROY_NOTIFY_EVENT, (1L<<17), &deal_close, mlx);
 }

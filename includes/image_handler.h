@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_handler.h                                   :+:      :+:    :+:   */
+/*   image_handler.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 23:26:28 by bbonaldi         ###   ########.fr       */
+/*   Created: 2022/06/30 01:03:40 by bbonaldi          #+#    #+#             */
+/*   Updated: 2022/06/30 03:26:49 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVENTS_HANDLER_H
-# define EVENTS_HANDLER_H
+#ifndef IMAGE_RENDER_H
+# define IMAGE_RENDER_H
 
-void	destroy_window(t_data *mlx);
-int		deal_key_press(int key, t_data *mlx);
-int		deal_close(t_data *mlx);
-void	handle_events(t_data *mlx);
-void	destroy_display(t_data *mlx);
-#endif //EVENTS_HANDLER_H
+void		image_render(t_data *mlx, t_xmp_img *img);
+void		image_destroy(t_data *mlx, t_xmp_img **img);
+t_xmp_img	*image_init(char *file_path);
+void		image_put(t_data *mlx, t_xmp_img *img);
+
+#endif

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events_handler.h                                   :+:      :+:    :+:   */
+/*   map_render.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 23:26:28 by bbonaldi         ###   ########.fr       */
+/*   Created: 2022/06/30 00:06:09 by bbonaldi          #+#    #+#             */
+/*   Updated: 2022/06/30 00:47:03 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVENTS_HANDLER_H
-# define EVENTS_HANDLER_H
+#ifndef MAP_RENDER_H
+# define MAP_RENDER_H
 
-void	destroy_window(t_data *mlx);
-int		deal_key_press(int key, t_data *mlx);
-int		deal_close(t_data *mlx);
-void	handle_events(t_data *mlx);
-void	destroy_display(t_data *mlx);
-#endif //EVENTS_HANDLER_H
+int	map_render(t_data *mlx, t_map_dimensions **map_dimensions);
+
+#endif
