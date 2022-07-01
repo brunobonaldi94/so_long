@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/30 04:13:58 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 04:31:36 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "shared_structs.h"
 # include "../libft/libft.h"
 # include "map_validation.h"
-# include "events_handler.h"
+# include "game_events_handler.h"
 # include "map_render.h"
 # include "game_exit.h"
 # include "image_handler.h"

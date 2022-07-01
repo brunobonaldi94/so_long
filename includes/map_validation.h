@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 02:04:45 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 04:11:41 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,6 @@
 # define MAP_COLLECTIBLE_CHAR 'C'
 # define MAP_EXIT_CHAR 'E'
 # define MAP_PLAYER_CHAR 'P'
-
-typedef struct s_map_dimensions
-{
-	int		rows;
-	int 	columns;
-	char	**map_matrix;
-}	t_map_dimensions;
-
-typedef struct s_valid_components
-{
-	int					has_exit;
-	int					has_collectible;
-	int					has_player_starting_position;
-	int					has_valid_char;
-	int					has_minimal_components;
-	t_map_dimensions	map_dimensions;
-	int					is_rect;
-	int					is_surrounded_by_wall;
-	int					is_valid_map;
-}	t_valid_components;
 
 t_map_dimensions	read_map(char *map_path);
 void	map_components_init(t_valid_components *map_components);

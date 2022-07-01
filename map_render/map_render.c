@@ -6,13 +6,13 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 02:41:04 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 04:24:16 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void render_map_component(t_data *mlx, t_xmp_img *img,
+void render_map_component(t_data *mlx, t_xmp_img **img,
 			t_map_dimensions *map_dimensions, char character)
 {
 	int	i;
@@ -28,9 +28,9 @@ void render_map_component(t_data *mlx, t_xmp_img *img,
 		{
 			if (map_dimensions->map_matrix[i][j] == character)
 			{
-				img->x = (j * DEFAULT_PIXEL_SIZE);
-				img->y = (i * DEFAULT_PIXEL_SIZE);
-				image_put(mlx, img);
+				(*img)->x = (j * DEFAULT_PIXEL_SIZE);
+				(*img)->y = (i * DEFAULT_PIXEL_SIZE);
+				image_put(mlx, *img);
 			}
 			j++;
 		}
@@ -39,64 +39,21 @@ void render_map_component(t_data *mlx, t_xmp_img *img,
 	
 }
 
-void wall_render(t_data *mlx, t_map_dimensions *map_dimensions)
+void	map_character_render(t_data *mlx, t_xmp_img *img,
+			t_map_dimensions *map_dimensions)
 {
-	t_xmp_img img;
-
-	img = mlx->img_wall;
-	img = image_init(IMG_WALL_PATH);
-	image_render(mlx, &img);
-	render_map_component(mlx, &img, map_dimensions, MAP_WALL_CHAR);
-	image_destroy(mlx, &img);
+	image_render(mlx, img);
+	render_map_component(mlx, &img, map_dimensions, img->map_char);
+	image_destroy(mlx, img);
 }
 
-void	player_render(t_data *mlx, t_map_dimensions *map_dimensions)
+void	map_characters_init(t_data *mlx)
 {
-	t_xmp_img img;
-
-	img = mlx->img_player;
-	img = image_init(IMG_PLAYER_PATH);
-	image_render(mlx, &img);
-	render_map_component(mlx, &img, map_dimensions, MAP_PLAYER_CHAR);
-	image_destroy(mlx, &img);
-}
-
-void	floor_render(t_data *mlx, t_map_dimensions *map_dimensions)
-{
-	t_xmp_img img;
-
-	img = mlx->img_floor;
-	img = image_init(IMG_FLOOR_PATH);
-	image_render(mlx, &img);
-	render_map_component(mlx, &img, map_dimensions, MAP_FLOOR_CHAR);
-	image_destroy(mlx, &img);
-}
-
-void	exit_render(t_data *mlx, t_map_dimensions *map_dimensions)
-{
-	t_xmp_img img;
-
-	img = mlx->img_exit;
-	img = image_init(IMG_EXIT_PATH);
-	image_render(mlx, &img);
-	render_map_component(mlx, &img, map_dimensions, MAP_EXIT_CHAR);
-	image_destroy(mlx, &img);
-}
-
-void	collectable_render(t_data *mlx, t_map_dimensions *map_dimensions)
-{
-	t_xmp_img img;
-
-	img = mlx->img_collectible;
-	img = image_init(IMG_COLLECTIBLE_PATH);
-	image_render(mlx, &img);
-	render_map_component(mlx, &img, map_dimensions, MAP_COLLECTIBLE_CHAR);
-	image_destroy(mlx, &img);
-}
-
-t_xmp_img	map_characters_init()
-{
-	 return image_init(IMG_COLLECTIBLE_PATH);
+	mlx->img_wall = image_init(IMG_WALL_PATH, MAP_WALL_CHAR);
+	mlx->img_floor = image_init(IMG_FLOOR_PATH, MAP_FLOOR_CHAR);
+	mlx->img_player = image_init(IMG_PLAYER_PATH, MAP_PLAYER_CHAR);
+	mlx->img_collectible = image_init(IMG_COLLECTIBLE_PATH, MAP_COLLECTIBLE_CHAR);
+	mlx->img_exit = image_init(IMG_EXIT_PATH, MAP_EXIT_CHAR);
 }
 
 int map_init(t_data *mlx, t_map_dimensions *map_dimensions)
@@ -111,11 +68,11 @@ int map_init(t_data *mlx, t_map_dimensions *map_dimensions)
 		free(mlx->win_ptr);
 		return (print_error(MLX_ERROR));
 	}
-	wall_render(mlx, map_dimensions);
-	floor_render(mlx, map_dimensions);
-	player_render(mlx, map_dimensions);
-	exit_render(mlx, map_dimensions);
-	collectable_render(mlx, map_dimensions);
+	map_character_render(mlx, &mlx->img_wall, map_dimensions);
+	map_character_render(mlx, &mlx->img_floor, map_dimensions);
+	map_character_render(mlx, &mlx->img_player, map_dimensions);
+	map_character_render(mlx, &mlx->img_collectible, map_dimensions);
+	map_character_render(mlx, &mlx->img_exit, map_dimensions);
  	return (SUCCES_CODE);
 }
 
@@ -127,8 +84,7 @@ int	map_render(t_data *mlx, t_map_dimensions *map_dimensions)
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 		return (print_error(MLX_ERROR));
-	mlx->img_exit.height = 0;
-	map_result = map_init(mlx, map_dimensions);
-	destroy_map_matrix(map_dimensions);
+	map_characters_init(mlx);
+ 	map_result = map_init(mlx, map_dimensions);
 	return (map_result);
 }

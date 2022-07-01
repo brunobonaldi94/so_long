@@ -6,13 +6,13 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 00:59:57 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 02:01:51 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 05:10:12 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_xmp_img	image_init(char *file_path)
+t_xmp_img	image_init(char *file_path, char map_char)
 {
 	t_xmp_img img;
 	
@@ -22,6 +22,7 @@ t_xmp_img	image_init(char *file_path)
 	img.mlx_img = NULL;
 	img.x = 0;
 	img.y = 0;
+	img.map_char = map_char;
 	return (img);
 }
 
@@ -48,4 +49,11 @@ void	image_put(t_data *mlx, t_xmp_img *img)
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img->mlx_img,
 			img->x, img->y);
 	}
+}
+
+void	image_full_cycle(t_data *mlx, t_xmp_img *img)
+{
+	image_render(mlx,img);
+	image_put(mlx, img);
+	image_destroy(mlx, img);
 }
