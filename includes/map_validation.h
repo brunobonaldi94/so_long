@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 04:11:41 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:50:18 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MAP_EXIT_CHAR 'E'
 # define MAP_PLAYER_CHAR 'P'
 
-t_map_dimensions	read_map(char *map_path);
+t_map_dimensions	read_map(t_data *mlx, char *map_path);
 void	map_components_init(t_valid_components *map_components);
 void	map_dimensions_init(t_map_dimensions *map_dimensions);
 void	assign_map_dimensions(t_map_dimensions *map_dimensions,

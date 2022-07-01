@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 01:29:12 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:53:48 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	is_valid_map_component(int component)
 
 void	map_dimensions_init(t_map_dimensions *map_dimensions)
 {
-	map_dimensions = (t_map_dimensions* )malloc(sizeof(t_map_dimensions));
 	(map_dimensions)->rows = 0;
 	(map_dimensions)->columns = 0;
 	(map_dimensions)->map_matrix = NULL;

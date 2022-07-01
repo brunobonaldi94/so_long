@@ -6,29 +6,45 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:34:31 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 02:05:32 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:31:07 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	print_error(int error_number)
+void	destroy_window(t_data *mlx)
 {
-	if (error_number == MLX_ERROR)
-		ft_printf(MLX_ERROR_MESSAGE);
-	else if (error_number == FEW_ARGUMENTS_ERROR)
-		ft_printf(FEW_ARGUMENTS_ERROR_MESSAGE);
-	else if (error_number == TOO_MANY_ARGUMENTS_ERROR)
-		ft_printf(TOO_MANY_ARGUMENTS_ERROR_MESSAGE);
-	else if (error_number == INVALID_MAP_ERROR)
-		ft_printf(INVALID_MAP_ERROR_MESSAGE);
-	return (ERROR_CODE);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	mlx->win_ptr = NULL;
 }
 
-void	game_exit(t_data *mlx, t_map_dimensions *map_dimensions)
+void	destroy_display(t_data *mlx)
 {
-	deal_close(mlx);
-	destroy_map_matrix(map_dimensions);
+  	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
 }
 
+void	destroy_images(t_data *mlx)
+{
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_collectible.mlx_img);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_exit.mlx_img);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_floor.mlx_img);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_player.mlx_img);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_wall.mlx_img);
+ }
 
+int exit_with_message(int status_code, char *message)
+{
+	ft_printf(message);
+	exit(status_code);
+}
+
+int game_exit(t_data *mlx)
+{
+	destroy_images(mlx);
+	destroy_map_matrix(&mlx->map_dimensions);
+	destroy_window(mlx);
+	destroy_display(mlx);
+	exit(0);
+	return (0);
+}

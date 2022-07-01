@@ -6,13 +6,18 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 04:10:38 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:50:18 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHARED_STRUCTS_H
 # define SHARED_STRUCTS_H
 
+typedef struct s_coordinates
+{
+	int x;
+	int y;
+}	t_coordinates;
 typedef struct s_map_dimensions
 {
 	int		rows;
@@ -44,21 +49,31 @@ typedef struct s_img
 
 typedef struct s_xmp_img
 {
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	char map_char;
-	char *relative_path;
-	void *mlx_img;
+	int				x;
+	int				y;
+	t_coordinates	*coordinates_list;
+	int				width;
+	int				height;
+	char			map_char;
+	char			*relative_path;
+	void 			*mlx_img;
 }	t_xmp_img;
+
+typedef struct s_game_play
+{
+	int	moves;
+	int	count_collectible;
+	int	can_exit;
+}	t_game_play;
 
 typedef struct s_data
 {
 	void				*mlx_ptr;
 	void				*win_ptr;
+	t_valid_components	map_components;
 	t_xmp_img			img_wall;
 	t_xmp_img			img_player;
+	t_game_play			game_play;
 	t_xmp_img			img_floor;
 	t_xmp_img			img_exit;
 	t_xmp_img			img_collectible;

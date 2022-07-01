@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 04:31:36 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:25:29 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,10 @@
 # define ERROR_CODE 1
 # define MLX_ERROR 1
 # define MLX_ERROR_MESSAGE "MLX Error: There was an error in Minilibx Library!"
-# define FEW_ARGUMENTS_ERROR 2
-# define FEW_ARGUMENTS_ERROR_MESSAGE "Too few arguments: You must compile \
-		with one map!"
-# define TOO_MANY_ARGUMENTS_ERROR 3
+# define FEW_ARGUMENTS_ERROR_MESSAGE "Too few arguments: You must run it\
+with one map!"
 # define TOO_MANY_ARGUMENTS_ERROR_MESSAGE "Too many arguments: You must \
-		compile with only one map!"
-# define INVALID_MAP_ERROR 4
+run it with only one map!"
 # define INVALID_MAP_ERROR_MESSAGE "Invalid Map"
 
 # define DEFAULT_PIXEL_SIZE	32

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 02:04:47 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 23:49:56 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_list	*read_map_from_file(char *file_path)
 	return (head_map);
 }
 
-t_map_dimensions	read_map(char *map_path)
+t_map_dimensions	read_map(t_data *mlx, char *map_path)
 {
  	int		is_eof;
 	t_valid_components	map_components;
@@ -108,7 +108,7 @@ t_map_dimensions	read_map(char *map_path)
 	t_list	*map_lines_list;
 	t_list	*tmp_map_lines_list;
 
-	map_components_init(&map_components);
+	map_components_init(&mlx->map_components);
 	map_dimensions_init(&map_dimensions);
  	map_lines_list = read_map_from_file(map_path);
 	tmp_map_lines_list = map_lines_list;
@@ -117,12 +117,12 @@ t_map_dimensions	read_map(char *map_path)
 	{
  		if (tmp_map_lines_list->next == NULL)
 			is_eof = TRUE;
-		check_map_validators(&map_components,
+		check_map_validators(&mlx->map_components,
 			(char *)tmp_map_lines_list->content, is_eof);
 		tmp_map_lines_list = tmp_map_lines_list->next;
 	}
- 	check_is_valid_map(&map_components);
-	assign_map_dimensions(&map_dimensions, map_components);
+ 	check_is_valid_map(&mlx->map_components);
+	assign_map_dimensions(&map_dimensions, mlx->map_components);
 	create_map_matrix(&map_dimensions, map_lines_list,
 		map_components.is_valid_map);
 	print_map(map_dimensions, map_components.is_valid_map);
