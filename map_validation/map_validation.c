@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/30 03:37:05 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 02:04:47 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,50 @@ void	debug(t_valid_components map_components, char *where)
 	ft_printf("\n%d-is_surrounded_by_wall;",map_components.is_surrounded_by_wall);
 	ft_printf("\n%d-is_valid_map;",map_components.is_valid_map);
 }
-void	print_map(t_map_dimensions *map_dimensions, int is_valid_map)
+void	print_map(t_map_dimensions map_dimensions, int is_valid_map)
 {
 	int j = 0;
 	if (is_valid_map == FALSE)
 		return ;
-	while (j < map_dimensions->rows)
+	while (j < map_dimensions.rows)
 	{
-		ft_printf("row:%d-%s\n", j, map_dimensions->map_matrix[j]);
+		ft_printf("row:%d-%s\n", j, map_dimensions.map_matrix[j]);
 		j++;
 	}
 }
 //##################
-void	destroy_map_matrix(t_map_dimensions **map_dimensions)
+void	destroy_map_matrix(t_map_dimensions *map_dimensions)
 {
 	int	row;
 
 	row = 0;
-	if (!(*map_dimensions)->map_matrix)
+	if (!(map_dimensions)->map_matrix)
 		return ;
-	while (row < (*map_dimensions)->rows)
+	while (row < (map_dimensions)->rows)
 	{
-		free((*map_dimensions)->map_matrix[row]);
+		free((map_dimensions)->map_matrix[row]);
 		row++;
 	}
-	free((*map_dimensions)->map_matrix);
-	free(*map_dimensions);
+	free((map_dimensions)->map_matrix);
+	//free(*map_dimensions);
 }
 
-void	create_map_matrix(t_map_dimensions **map_components,
+void	create_map_matrix(t_map_dimensions *map_dimensions,
 			t_list *map_lines_list, int is_valid_map)
 {
  	int					row;
- 	t_map_dimensions	*current_map_dimension;
 	t_list				*tmp_map_lines_list;
 
 	if (is_valid_map == FALSE)
 		return ;
- 	current_map_dimension = *map_components;
+
 	row = 0;
- 	current_map_dimension->map_matrix = 
-		(char **)malloc(sizeof(char *) * current_map_dimension->rows);
-	while (row < current_map_dimension->rows)
+ 	map_dimensions->map_matrix = 
+		(char **)malloc(sizeof(char *) * map_dimensions->rows);
+	while (row < map_dimensions->rows)
 	{
 		
-		current_map_dimension->map_matrix[row] = 
+		map_dimensions->map_matrix[row] = 
 			ft_strtrim((char *)map_lines_list->content, "\n");
 		row++;
 		tmp_map_lines_list = map_lines_list->next;
@@ -101,11 +100,11 @@ t_list	*read_map_from_file(char *file_path)
 	return (head_map);
 }
 
-t_map_dimensions	*read_map(char *map_path)
+t_map_dimensions	read_map(char *map_path)
 {
  	int		is_eof;
 	t_valid_components	map_components;
-	t_map_dimensions	*map_dimensions;
+	t_map_dimensions	map_dimensions;
 	t_list	*map_lines_list;
 	t_list	*tmp_map_lines_list;
 

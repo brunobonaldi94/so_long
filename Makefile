@@ -30,7 +30,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 %.o:	%.c
-	$(CC) $(CFLAGS) $(INCLUDES_MLX_LINUX) $(INCLUDES_USR) $(INCLUDES) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES_MLX_LINUX) $(INCLUDES_USR) $(INCLUDES) -O0 -c $< -o $@
 
 all:	$(LIBFT_FULL_PATH) $(NAME)	
 

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/30 04:13:35 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/01 02:41:04 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,65 +41,70 @@ void render_map_component(t_data *mlx, t_xmp_img *img,
 
 void wall_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
-	t_xmp_img *img;
+	t_xmp_img img;
 
 	img = mlx->img_wall;
 	img = image_init(IMG_WALL_PATH);
-	image_render(mlx, img);
-	render_map_component(mlx, img, map_dimensions, MAP_WALL_CHAR);
+	image_render(mlx, &img);
+	render_map_component(mlx, &img, map_dimensions, MAP_WALL_CHAR);
 	image_destroy(mlx, &img);
 }
 
 void	player_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
-	t_xmp_img *img;
+	t_xmp_img img;
 
 	img = mlx->img_player;
 	img = image_init(IMG_PLAYER_PATH);
-	image_render(mlx, img);
-	render_map_component(mlx, img, map_dimensions, MAP_PLAYER_CHAR);
+	image_render(mlx, &img);
+	render_map_component(mlx, &img, map_dimensions, MAP_PLAYER_CHAR);
 	image_destroy(mlx, &img);
 }
 
 void	floor_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
-	t_xmp_img *img;
+	t_xmp_img img;
 
 	img = mlx->img_floor;
 	img = image_init(IMG_FLOOR_PATH);
-	image_render(mlx, img);
-	render_map_component(mlx, img, map_dimensions, MAP_FLOOR_CHAR);
+	image_render(mlx, &img);
+	render_map_component(mlx, &img, map_dimensions, MAP_FLOOR_CHAR);
 	image_destroy(mlx, &img);
 }
 
 void	exit_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
-	t_xmp_img *img;
+	t_xmp_img img;
 
 	img = mlx->img_exit;
 	img = image_init(IMG_EXIT_PATH);
-	image_render(mlx, img);
-	render_map_component(mlx, img, map_dimensions, MAP_EXIT_CHAR);
+	image_render(mlx, &img);
+	render_map_component(mlx, &img, map_dimensions, MAP_EXIT_CHAR);
 	image_destroy(mlx, &img);
 }
 
 void	collectable_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
-	t_xmp_img *img;
+	t_xmp_img img;
 
 	img = mlx->img_collectible;
 	img = image_init(IMG_COLLECTIBLE_PATH);
-	image_render(mlx, img);
-	render_map_component(mlx, img, map_dimensions, MAP_COLLECTIBLE_CHAR);
+	image_render(mlx, &img);
+	render_map_component(mlx, &img, map_dimensions, MAP_COLLECTIBLE_CHAR);
 	image_destroy(mlx, &img);
+}
+
+t_xmp_img	map_characters_init()
+{
+	 return image_init(IMG_COLLECTIBLE_PATH);
 }
 
 int map_init(t_data *mlx, t_map_dimensions *map_dimensions)
 {
 
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, 
-	map_dimensions->columns * DEFAULT_PIXEL_SIZE,
-	map_dimensions->rows * DEFAULT_PIXEL_SIZE, 
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr,
+	(map_dimensions)->columns * DEFAULT_PIXEL_SIZE,
+	(map_dimensions)->rows * DEFAULT_PIXEL_SIZE,
 	"so_long bbonaldi");
 	if (mlx->win_ptr == NULL)
 	{
@@ -114,7 +119,7 @@ int map_init(t_data *mlx, t_map_dimensions *map_dimensions)
  	return (SUCCES_CODE);
 }
 
-int	map_render(t_data *mlx, t_map_dimensions **map_dimensions)
+int	map_render(t_data *mlx, t_map_dimensions *map_dimensions)
 {
 	int	map_result;
 
@@ -122,7 +127,8 @@ int	map_render(t_data *mlx, t_map_dimensions **map_dimensions)
 	mlx->mlx_ptr = mlx_init();
 	if (mlx->mlx_ptr == NULL)
 		return (print_error(MLX_ERROR));
-	map_result = map_init(mlx, *map_dimensions);
+	mlx->img_exit.height = 0;
+	map_result = map_init(mlx, map_dimensions);
 	destroy_map_matrix(map_dimensions);
 	return (map_result);
 }
