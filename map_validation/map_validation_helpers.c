@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 23:53:48 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 03:47:45 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_valid_component(int component)
 {
-	return (component == TRUE);
+	return (component > 0);
 }
 
 int	is_valid_map_component(int component)
@@ -35,8 +35,10 @@ void	map_dimensions_init(t_map_dimensions *map_dimensions)
 
 void	map_components_init(t_valid_components *map_components)
 {
-	map_components->has_collectible = -1;
-	map_components->has_exit = -1;
+	map_components->count_collectibles = 0;
+	map_components->count_exit = 0;
+	map_components->count_internal_walls = 0;
+	map_components->count_floor = 0;
 	map_components->is_rect = -1;
 	map_components->has_player_starting_position = -1;
 	map_components->map_dimensions.rows = 0;

@@ -6,13 +6,14 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/24 23:45:39 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 03:57:55 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_minimal_components(t_valid_components *map_components, char component)
+void	check_minimal_components(t_valid_components *map_components,
+			char component)
 {
 	if (is_valid_map_component(component) == FALSE)
 	{
@@ -21,13 +22,17 @@ void	check_minimal_components(t_valid_components *map_components, char component
 		return ;
 	}
 	if (component == MAP_COLLECTIBLE_CHAR)
-			map_components->has_collectible = TRUE;
+		map_components->count_collectibles++;
 	else if (component == MAP_EXIT_CHAR)
-			map_components->has_exit = TRUE;
+		map_components->count_exit++;
 	else if (component == MAP_PLAYER_CHAR)
-			map_components->has_player_starting_position = TRUE;
-	if (is_valid_component(map_components->has_collectible) 
-		&& is_valid_component(map_components->has_collectible) 
+		map_components->has_player_starting_position = TRUE;
+	else if (component == MAP_WALL_CHAR)
+		map_components->count_internal_walls++;
+	else if (component == MAP_FLOOR_CHAR)
+		map_components->count_floor++;
+	if (is_valid_component(map_components->count_collectibles)
+		&& is_valid_component(map_components->count_exit)
 		&& is_valid_component(map_components->has_player_starting_position))
 		map_components->has_minimal_components = TRUE;
 }
@@ -94,7 +99,7 @@ void	check_map_validators(t_valid_components *map_components,
 	current_map_dimensions.rows = map_components->map_dimensions.rows;
 	if (map_components->is_valid_map == FALSE)
 		return ;
-	while (is_eof == FALSE && *map_line)
+	while (*map_line)
 	{
 		if (*map_line == '\n')
 		{

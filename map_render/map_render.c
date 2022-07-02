@@ -6,36 +6,63 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 23:32:03 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 05:59:52 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// void save_coordinates_list(t_data *mlx, t_xmp_img *img, t_coordinates counters,
+// 	int *count)
+// {
+// 	t_coordinates coordinates;
+	
+// 	coordinates.x = img->coordinates.x;
+// 	coordinates.y = img->coordinates.y;
+// 	if (counters.y == 0 || counters.y == mlx->map_dimensions.rows - 1
+// 		|| counters.x == 0 || counters.x == mlx->map_dimensions.columns - 1)
+// 		return;
+// 	img->coordinates_list[*count] = coordinates;
+// 	*count += 1; 
+// }
+
+t_coordinates	save_coordinates_list(t_coordinates coordinates)
+{
+	t_coordinates new_coordinates;
+	
+	new_coordinates.x = coordinates.x;
+	new_coordinates.y = coordinates.y;
+	return (new_coordinates);
+}
+
 void render_map_component(t_data *mlx, t_xmp_img *img,
 			t_map_dimensions *map_dimensions, char character)
 {
-	int	i;
-	int	j;
+	t_coordinates counters;
+	int count;
 	
-	i = 0;
-	j = 0;
-	while (i < map_dimensions->rows)
+	counters.x = 0;
+	counters.y = 0;
+	count = 0;
+	img->coordinates_list = (t_coordinates *)malloc(sizeof(t_coordinates) *
+		img->count);
+	while (counters.y < map_dimensions->rows)
 	{
-		j = 0;
-		while (j < map_dimensions->columns)
+		counters.x = 0;
+		while (counters.x < map_dimensions->columns)
 		{
-			if (map_dimensions->map_matrix[i][j] == character)
+			if (map_dimensions->map_matrix[counters.y][counters.x] == character)
 			{
-				img->x = (j * DEFAULT_PIXEL_SIZE);
-				img->y = (i * DEFAULT_PIXEL_SIZE);
+				img->coordinates.x = (counters.x * DEFAULT_PIXEL_SIZE);
+				img->coordinates.y = (counters.y * DEFAULT_PIXEL_SIZE);
 				image_put(mlx, img);
+				img->coordinates_list[count++] = 
+					save_coordinates_list(img->coordinates);
 			}
-			j++;
+			counters.x++;
 		}
-		i++;
+		counters.y++;
 	}
-	
 }
 
 void map_render(t_data *mlx, t_map_dimensions *map_dimensions)

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 23:50:18 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 04:48:19 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_coordinates
 	int x;
 	int y;
 }	t_coordinates;
+
 typedef struct s_map_dimensions
 {
 	int		rows;
@@ -27,8 +28,10 @@ typedef struct s_map_dimensions
 
 typedef struct s_valid_components
 {
-	int					has_exit;
-	int					has_collectible;
+	int					count_exit;
+	int					count_collectibles;
+	int					count_internal_walls;
+	int					count_floor;
 	int					has_player_starting_position;
 	int					has_valid_char;
 	int					has_minimal_components;
@@ -49,9 +52,9 @@ typedef struct s_img
 
 typedef struct s_xmp_img
 {
-	int				x;
-	int				y;
+	t_coordinates	coordinates;
 	t_coordinates	*coordinates_list;
+	int				count;
 	int				width;
 	int				height;
 	char			map_char;
@@ -61,8 +64,8 @@ typedef struct s_xmp_img
 
 typedef struct s_game_play
 {
-	int	moves;
-	int	count_collectible;
+	int	count_moves;
+	int	count_collectibles_acquired;
 	int	can_exit;
 }	t_game_play;
 
@@ -71,9 +74,9 @@ typedef struct s_data
 	void				*mlx_ptr;
 	void				*win_ptr;
 	t_valid_components	map_components;
+	t_game_play			game_play;
 	t_xmp_img			img_wall;
 	t_xmp_img			img_player;
-	t_game_play			game_play;
 	t_xmp_img			img_floor;
 	t_xmp_img			img_exit;
 	t_xmp_img			img_collectible;

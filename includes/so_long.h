@@ -38,6 +38,11 @@
 # define KEY_A 0x0061
 # define KEY_S 0x0073
 # define KEY_D 0x0064
+#define KEY_LEFT 0xFF51
+#define KEY_UP 0xFF52
+#define KEY_RIGHT 0xFF53
+#define KEY_DOWN 0xFF54
+
 
 # define RED_PIXEL 0xFF0000
 # define GREEN_PIXEL 0xFF00

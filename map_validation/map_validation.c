@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 23:49:56 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 04:23:42 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	debug(t_valid_components map_components, char *where)
 {
 	ft_printf("========================%s=====================",where);
-	ft_printf("\n%d-has_exit;",map_components.has_exit);
-	ft_printf("\n%d-has_collectible;",map_components.has_collectible);
+	ft_printf("\n%d-has_exit;",map_components.count_exit);
+	ft_printf("\n%d-has_collectible;",map_components.count_collectibles);
 	ft_printf("\n%d-has_player_starting_position;",map_components.has_player_starting_position);
 	ft_printf("\n%d-has_valid_char;",map_components.has_valid_char);
 	ft_printf("\n%d-has_minimal_components;",map_components.has_minimal_components);
@@ -38,6 +38,16 @@ void	print_map(t_map_dimensions map_dimensions, int is_valid_map)
 	}
 }
 //##################
+
+void	recalculate_internal_walls(t_valid_components *map_components,
+			t_map_dimensions *map_dimensions)
+{
+	int	perimeter = 2 * (map_dimensions->rows + map_dimensions->columns);
+	int	edges = 4;
+	map_components->count_internal_walls -= perimeter  - edges;
+		
+}
+
 void	destroy_map_matrix(t_map_dimensions *map_dimensions)
 {
 	int	row;
@@ -61,8 +71,10 @@ void	create_map_matrix(t_map_dimensions *map_dimensions,
 	t_list				*tmp_map_lines_list;
 
 	if (is_valid_map == FALSE)
+	{
+		ft_lstclear(&map_lines_list, &free);
 		return ;
-
+	}
 	row = 0;
  	map_dimensions->map_matrix = 
 		(char **)malloc(sizeof(char *) * map_dimensions->rows);
@@ -102,11 +114,10 @@ t_list	*read_map_from_file(char *file_path)
 
 t_map_dimensions	read_map(t_data *mlx, char *map_path)
 {
- 	int		is_eof;
-	t_valid_components	map_components;
+ 	int					is_eof;
 	t_map_dimensions	map_dimensions;
-	t_list	*map_lines_list;
-	t_list	*tmp_map_lines_list;
+	t_list				*map_lines_list;
+	t_list				*tmp_map_lines_list;
 
 	map_components_init(&mlx->map_components);
 	map_dimensions_init(&map_dimensions);
@@ -124,8 +135,9 @@ t_map_dimensions	read_map(t_data *mlx, char *map_path)
  	check_is_valid_map(&mlx->map_components);
 	assign_map_dimensions(&map_dimensions, mlx->map_components);
 	create_map_matrix(&map_dimensions, map_lines_list,
-		map_components.is_valid_map);
-	print_map(map_dimensions, map_components.is_valid_map);
-	//destroy_map_matrix(&map_dimensions);
+		mlx->map_components.is_valid_map);
+	//recalculate_internal_walls(&mlx->map_components, &map_dimensions);
+	print_map(map_dimensions, mlx->map_components.is_valid_map);
  	return (map_dimensions);
 }
+ 
