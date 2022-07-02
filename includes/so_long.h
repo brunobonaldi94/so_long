@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/01 23:25:29 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:04:06 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 # define MLX_WINDOW_WIDTH 1280
 # define MLX_WINDOW_HEIGHT 720
+# define GAME_NAME "so_long bbonaldi"
 
 # define KEY_PRESS_EVENT 2
 # define DESTROY_NOTIFY_EVENT 17
@@ -38,11 +39,10 @@
 # define KEY_A 0x0061
 # define KEY_S 0x0073
 # define KEY_D 0x0064
-#define KEY_LEFT 0xFF51
-#define KEY_UP 0xFF52
-#define KEY_RIGHT 0xFF53
-#define KEY_DOWN 0xFF54
-
+# define KEY_LEFT 0xFF51
+# define KEY_UP 0xFF52
+# define KEY_RIGHT 0xFF53
+# define KEY_DOWN 0xFF54
 
 # define RED_PIXEL 0xFF0000
 # define GREEN_PIXEL 0xFF00
@@ -50,6 +50,12 @@
 
 # define TRUE 1
 # define FALSE 0
+
+# define MAP_FLOOR_CHAR '0'
+# define MAP_WALL_CHAR '1'
+# define MAP_COLLECTIBLE_CHAR 'C'
+# define MAP_EXIT_CHAR 'E'
+# define MAP_PLAYER_CHAR 'P'
 
 # define SUCCES_CODE 1
 # define ERROR_CODE 1
@@ -66,7 +72,7 @@ run it with only one map!"
 # define IMG_ENEMY_PATH "../assets/images/enemy.xpm"
 # define IMG_COLLECTIBLE_PATH "../assets/images/collectable.xpm"
 # define IMG_FLOOR_PATH "../assets/images/floor.xpm"
-# define IMG_PLAYER_PATH "../assets/images/player.xpm"
+# define IMG_PLAYER_RIGHT_PATH "../assets/images/player_r.xpm"
+# define IMG_PLAYER_LEFT_PATH "../assets/images/player_l.xpm"
 # define IMG_EXIT_PATH "../assets/images/exit.xpm"
-
 #endif // SO_LONG_H

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 04:48:19 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:06:21 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 typedef struct s_coordinates
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_coordinates;
 
 typedef struct s_map_dimensions
 {
 	int		rows;
-	int 	columns;
+	int		columns;
 	char	**map_matrix;
 }	t_map_dimensions;
 
@@ -30,7 +30,7 @@ typedef struct s_valid_components
 {
 	int					count_exit;
 	int					count_collectibles;
-	int					count_internal_walls;
+	int					count_walls;
 	int					count_floor;
 	int					has_player_starting_position;
 	int					has_valid_char;
@@ -48,18 +48,19 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
+}	t_img;
 
 typedef struct s_xmp_img
 {
 	t_coordinates	coordinates;
 	t_coordinates	*coordinates_list;
+	int				is_right;
 	int				count;
 	int				width;
 	int				height;
 	char			map_char;
 	char			*relative_path;
-	void 			*mlx_img;
+	void			*mlx_img;
 }	t_xmp_img;
 
 typedef struct s_game_play
@@ -91,7 +92,5 @@ typedef struct s_rectangule
 	int	height;
 	int	color;
 }	t_rectangule;
-
-
 
 #endif

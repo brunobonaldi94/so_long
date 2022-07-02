@@ -7,7 +7,7 @@ all:	$(NAME)
 
 MAP_FILE = ../assets/maps/complex_map.ber
 
-NORMINETTES_PATH = $(shell find ../ -maxdepth 1 -type d ! -path '../.*' ! -path '../' ! -path '../test' | grep -v mlx_linux | tr '\n' ' ')
+NORMINETTES_PATH = $(shell find ../ -maxdepth 1 -type d ! -path '../.*' ! -path '../' ! -path '../test' ! -path '../utils' | grep -v mlx_linux | tr '\n' ' ')
 
 $(NAME):
 	@$(MAKE) all -C $(SO_LONG_PATH)

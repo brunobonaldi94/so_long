@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:52:34 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/27 23:12:52 by user42           ###   ########.fr       */
+/*   Updated: 2022/07/02 19:08:24 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	render(t_data *mlx)
 			MLX_WINDOW_HEIGHT - 100,100, 100, GREEN_PIXEL});
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img->mlx_img, 0, 0);
 	}
-	//mlx_destroy_image(mlx->mlx_ptr, img->mlx_img);
 	return (0);
 }
  
