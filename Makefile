@@ -17,6 +17,10 @@ SRCS_LIBFT_PATH = ./libft/
 LIBFT = libft.a
 LIBFT_FULL_PATH = $(addprefix $(SRCS_LIBFT_PATH),$(LIBFT))
 
+MLX_LINUX_PATH = ./mlx_linux/
+MLX = libmlx_Linux.a
+MLX_FULL_PATH = $(addprefix $(MLX_LINUX_PATH),$(MLX))
+
 NAME = so_long
 INCLUDES_MLX_LINUX = -Imlx_linux
 INCLUDES_USR = -I./usr/include
@@ -37,6 +41,12 @@ all:	$(LIBFT_FULL_PATH) $(NAME)
 $(LIBFT_FULL_PATH):
 	make bonus -C $(SRCS_LIBFT_PATH)
 	cp $(LIBFT_FULL_PATH) ./
+
+$(MLX_FULL_PATH):
+	@tput setaf 5
+	@echo COMPILING MLX
+	@cd $(MLX_LINUX_PATH) && ./configure && cd ../
+	@cp $(MLX_FULL_PATH) ./
 
 $(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBRARY_MLX_PATH) \

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 17:33:46 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 00:36:45 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ void	render_map_component(t_data *mlx, t_xmp_img *img,
 	}
 }
 
-void	map_render(t_data *mlx, t_map_dimensions *map_dimensions)
+int	map_render(t_data *mlx)
 {
-	render_map_component(mlx, &mlx->img_wall, map_dimensions);
-	render_map_component(mlx, &mlx->img_floor, map_dimensions);
-	render_map_component(mlx, &mlx->img_player, map_dimensions);
-	render_map_component(mlx, &mlx->img_collectible, map_dimensions);
-	render_map_component(mlx, &mlx->img_exit, map_dimensions);
+	render_map_component(mlx, &mlx->img_wall, &mlx->map_dimensions);
+	render_map_component(mlx, &mlx->img_floor, &mlx->map_dimensions);
+	render_map_component(mlx, &mlx->img_player, &mlx->map_dimensions);
+	render_map_component(mlx, &mlx->img_collectible, &mlx->map_dimensions);
+	render_map_component(mlx, &mlx->img_exit, &mlx->map_dimensions);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 16:46:10 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 00:24:27 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	create_map_matrix(t_map_dimensions *map_dimensions,
 				t_list *map_lines_list, int is_valid_map)
 {
 	int		row;
-	t_list	*tmp_map_lines_list;
 
 	if (is_valid_map == FALSE)
 	{
@@ -46,9 +45,7 @@ void	create_map_matrix(t_map_dimensions *map_dimensions,
 		map_dimensions->map_matrix[row]
 			= ft_strtrim((char *)map_lines_list->content, "\n");
 		row++;
-		tmp_map_lines_list = map_lines_list->next;
-		ft_lstdelone(map_lines_list, &free);
-		map_lines_list = tmp_map_lines_list;
+		map_lines_list = map_lines_list->next;
 	}
 }
 
@@ -98,6 +95,7 @@ t_map_dimensions	read_map(t_data *mlx, char *map_path)
 	assign_map_dimensions(&map_dimensions, mlx->map_components);
 	create_map_matrix(&map_dimensions, map_lines_list,
 		mlx->map_components.is_valid_map);
+	ft_lstclear(&map_lines_list, &free);
 	return (map_dimensions);
 }
 
