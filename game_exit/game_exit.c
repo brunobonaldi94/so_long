@@ -6,37 +6,11 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:34:31 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 19:08:02 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 03:08:55 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	destroy_window(t_data *mlx)
-{
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	mlx->win_ptr = NULL;
-}
-
-void	destroy_display(t_data *mlx)
-{
-	mlx_destroy_display(mlx->mlx_ptr);
-	free(mlx->mlx_ptr);
-}
-
-void	destroy_images(t_data *mlx)
-{
-	free(mlx->img_collectible.coordinates_list);
-	free(mlx->img_exit.coordinates_list);
-	free(mlx->img_floor.coordinates_list);
-	free(mlx->img_player.coordinates_list);
-	free(mlx->img_wall.coordinates_list);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_collectible.mlx_img);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_exit.mlx_img);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_floor.mlx_img);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_player.mlx_img);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_wall.mlx_img);
-}
 
 int	exit_with_message(int status_code, char *message)
 {

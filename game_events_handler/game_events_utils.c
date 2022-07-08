@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:33:11 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:37:56 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:41:01 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,25 @@ int	is_there_an_object(t_data *mlx, t_xmp_img *img,
 	{
 		if (img->coordinates_list[i].x == new_cordinates.x
 			&& img->coordinates_list[i].y == new_cordinates.y)
+		{
+			if (img->map_char == MAP_COLLECTIBLE_CHAR)
+			{
+				img->coordinates_list[i].x = 0;
+				img->coordinates_list[i].y = 0;
+			}
 			return (1);
+		}
 		i++;
 	}
 	return (0);
+}
+
+void	update_map_matrix(t_data *mlx, t_xmp_img *img)
+{
+	int	row;
+	int	column;
+
+	row = img->coordinates.y / DEFAULT_PIXEL_SIZE;
+	column = img->coordinates.x / DEFAULT_PIXEL_SIZE;
+	mlx->map_dimensions.map_matrix[row][column] = img->map_char;
 }

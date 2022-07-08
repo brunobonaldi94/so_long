@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 00:39:42 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:40:52 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	floor_replace_player(t_data *mlx)
 void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 {
 	floor_replace_player(mlx);
+	update_map_matrix(mlx, &mlx->img_floor);
 	calculate_new_coordinates(&mlx->img_player, coordinates_adder);
 	if (coordinates_adder.x < 0 && mlx->img_player.is_right == TRUE)
 	{
@@ -34,6 +35,7 @@ void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 		mlx->img_player.is_right = TRUE;
 	}
 	image_put(mlx, &mlx->img_player);
+	update_map_matrix(mlx, &mlx->img_player);
 	mlx->game_play.count_moves++;
 	ft_printf("moves: %d\n", mlx->game_play.count_moves);
 }
@@ -47,15 +49,14 @@ void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)
 		return ;
 	if (is_there_an_object(mlx, &mlx->img_collectible, coordinates_adder))
 	{
-		mlx->game_play.count_collectibles_acquired++;
-		if (mlx->game_play.count_collectibles_acquired
-			== mlx->img_collectible.count)
+		mlx->game_play.start_count_collectibles--;
+		if (mlx->game_play.start_count_collectibles == 0)
 			mlx->game_play.can_exit = TRUE;
 	}
-	player_move(mlx, coordinates_adder);
-	if (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
+	else if (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
 		&& mlx->game_play.can_exit == TRUE)
 		game_exit(mlx);
+	player_move(mlx, coordinates_adder);
 }
 
 int	deal_key_press(int key, t_data *mlx)
@@ -89,6 +90,7 @@ int	deal_key_press(int key, t_data *mlx)
 
 void	handle_events(t_data *mlx)
 {
+	mlx_hook(mlx->win_ptr, FOCUS_IN_EVENT, (1 << 21), &map_re_render, mlx);
 	mlx_hook(mlx->win_ptr, KEY_PRESS_EVENT, (1L << 0), &deal_key_press, mlx);
 	mlx_hook(mlx->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), &game_exit, mlx);
 }

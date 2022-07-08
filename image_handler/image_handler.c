@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 00:59:57 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:52:51 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:17:43 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void	map_characters_init(t_data *mlx)
 void	map_characters_load(t_data *mlx)
 {
 	map_characters_init(mlx);
+	mlx->game_play.count_moves = 0;
+	mlx->game_play.can_exit = FALSE;
+	mlx->game_play.start_count_collectibles
+		= mlx->map_components.count_collectibles;
 	image_render(mlx, &mlx->img_floor);
 	image_render(mlx, &mlx->img_exit);
 	image_render(mlx, &mlx->img_collectible);
 	image_render(mlx, &mlx->img_player);
 	image_render(mlx, &mlx->img_wall);
-	mlx->game_play.count_moves = 0;
-	mlx->game_play.count_collectibles_acquired = 0;
-	mlx->game_play.can_exit = FALSE;
 }

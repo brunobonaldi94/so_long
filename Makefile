@@ -7,8 +7,8 @@ SRCS =	so_long.c \
 		$(addprefix $(MAP_VALIDATION_PATH)/,	map_validation.c map_validation_helpers.c \
 													map_validation_checkers.c) \
 		$(addprefix $(GAME_EVENTS_HANDLER_PATH)/, game_events_handler.c game_events_utils.c) \
-		$(addprefix $(MAP_RENDER_PATH)/, map_render.c) \
-		$(addprefix $(GAME_EXIT_PATH)/, game_exit.c) \
+		$(addprefix $(MAP_RENDER_PATH)/, map_render.c map_render_utils.c) \
+		$(addprefix $(GAME_EXIT_PATH)/, game_exit.c game_exit_utils.c) \
 		$(addprefix $(IMAGE_RENDER_PATH)/, image_handler.c image_handler_utils.c)
 
 OBJS = $(SRCS:.c=.o)

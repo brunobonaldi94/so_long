@@ -6,20 +6,11 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 00:36:45 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:45:13 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-t_coordinates	save_coordinates(t_coordinates coordinates)
-{
-	t_coordinates	new_coordinates;
-
-	new_coordinates.x = coordinates.x;
-	new_coordinates.y = coordinates.y;
-	return (new_coordinates);
-}
 
 void	render_map_component(t_data *mlx, t_xmp_img *img,
 			t_map_dimensions *map_dimensions)
@@ -58,5 +49,13 @@ int	map_render(t_data *mlx)
 	render_map_component(mlx, &mlx->img_player, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_collectible, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_exit, &mlx->map_dimensions);
+	return (0);
+}
+
+int	map_re_render(t_data *mlx)
+{
+	re_count_map_char(mlx);
+	free_coordinates(mlx);
+	map_render(mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 19:06:21 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 04:17:43 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_xmp_img
 typedef struct s_game_play
 {
 	int	count_moves;
-	int	count_collectibles_acquired;
+	int	start_count_collectibles;
 	int	can_exit;
 }	t_game_play;
 

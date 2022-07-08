@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 19:04:06 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/08 03:01:18 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 
 # define KEY_PRESS_EVENT 2
 # define DESTROY_NOTIFY_EVENT 17
+# define FOCUS_IN_EVENT 9
 
 # define KEY_SCAPE 0xff1b
 # define KEY_W 0x0077
