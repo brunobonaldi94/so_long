@@ -6,16 +6,33 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:34:31 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 03:08:55 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:11:34 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	exit_with_message(int status_code, char *message)
+void	print_error(char *message)
+{
+	ft_printf("%s\n%s\n", "Error", message);
+}
+
+void	print_map_error(t_data *mlx)
 {
 	ft_printf("Error\n");
-	ft_printf(message);
+	if (mlx->map_components.is_rect == FALSE)
+		ft_printf("%s\n", MAP_IS_NOT_RECT_ERROR_MESSAGE);
+	if (mlx->map_components.has_minimal_components == FALSE)
+		ft_printf("%s\n", MAP_MUST_HAVE_MINIMAL_COMPONENTS_ERROR_MESSAGE);
+	if (mlx->map_components.has_valid_char == FALSE)
+		ft_printf("%s\n", MAP_HAS_INVALID_CHAR_ERROR_MESSAGE);
+	if (mlx->map_components.is_surrounded_by_wall == FALSE)
+		ft_printf("%s\n", MAP_IS_NOT_SURROUNDED_BY_WALL_ERROR_MESSAGE);
+}
+
+int	exit_with_message(int status_code, char *message)
+{
+	print_error(message);
 	exit(status_code);
 }
 

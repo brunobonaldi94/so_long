@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:48:57 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 05:07:27 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ void	check_minimal_components(t_valid_components *map_components,
 		map_components->count_walls++;
 	else if (component == MAP_FLOOR_CHAR)
 		map_components->count_floor++;
-	if (is_valid_component(map_components->count_collectibles)
-		&& is_valid_component(map_components->count_exit)
-		&& is_valid_component(map_components->has_player_starting_position))
-		map_components->has_minimal_components = TRUE;
 }
 
 void	check_is_rectangule(t_valid_components *map_components,
@@ -55,12 +51,6 @@ void	check_is_rectangule(t_valid_components *map_components,
 	if (is_eof == FALSE)
 		map_components->map_dimensions.columns = columns;
 	map_components->map_dimensions.rows++;
-	if (is_eof == TRUE
-		&& map_components->map_dimensions.columns > 0
-		&& map_components->map_dimensions.rows > 0
-		&& map_components->map_dimensions.columns
-		!= map_components->map_dimensions.rows)
-		map_components->is_rect = TRUE;
 }
 
 void	check_is_surrounded_by_wall(t_valid_components *map_components,
@@ -87,7 +77,6 @@ void	check_is_surrounded_by_wall(t_valid_components *map_components,
 		map_components->is_valid_map = FALSE;
 		return ;
 	}
-	map_components->is_surrounded_by_wall = TRUE;
 }
 
 void	check_map_validators(t_valid_components *map_components,
@@ -97,8 +86,6 @@ void	check_map_validators(t_valid_components *map_components,
 
 	current_map_dimensions.columns = 0;
 	current_map_dimensions.rows = map_components->map_dimensions.rows;
-	if (map_components->is_valid_map == FALSE)
-		return ;
 	while (*map_line)
 	{
 		if (*map_line == '\n')
@@ -117,6 +104,11 @@ void	check_map_validators(t_valid_components *map_components,
 
 int	check_is_valid_map(t_valid_components *map_components)
 {
+	map_components->has_minimal_components
+		= map_has_minimal_components(map_components);
+	map_components->is_rect = is_rectangule(map_components);
+	if (map_components->is_surrounded_by_wall == -1)
+		map_components->is_surrounded_by_wall = TRUE;
 	if (map_components->is_valid_map == FALSE)
 		return (FALSE);
 	if (is_valid_component(map_components->has_minimal_components)

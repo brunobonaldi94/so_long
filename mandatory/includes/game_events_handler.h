@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 03:28:58 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:16:25 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int		is_there_an_object(t_data *mlx, t_xmp_img *img,
 int		is_in_map_boundaries(t_data *mlx,
 			t_coordinates coordinates_adder);
 void	update_map_matrix(t_data *mlx, t_xmp_img *img);
+
 #endif //GAME_EVENTS_HANDLER_H

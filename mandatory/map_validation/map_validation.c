@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 00:24:27 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 03:59:19 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ void	create_map_matrix(t_map_dimensions *map_dimensions,
 	int		row;
 
 	if (is_valid_map == FALSE)
-	{
-		ft_lstclear(&map_lines_list, &free);
 		return ;
-	}
 	row = 0;
 	map_dimensions->map_matrix
 		= (char **)malloc(sizeof(char *) * map_dimensions->rows);
@@ -57,6 +54,8 @@ t_list	*read_map_from_file(char *file_path)
 	t_list	*node_map;
 
 	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+		exit_with_message(ERROR_CODE, NOT_FOUND_FILE_ERROR_MESSAGE);
 	head_map = NULL;
 	node_map = NULL;
 	map_line = NULL;
@@ -98,32 +97,3 @@ t_map_dimensions	read_map(t_data *mlx, char *map_path)
 	ft_lstclear(&map_lines_list, &free);
 	return (map_dimensions);
 }
-
-//recalculate_internal_walls(&mlx->map_components, &map_dimensions);
-//print_map(map_dimensions, mlx->map_components.is_valid_map);
-
-// void	debug(t_valid_components map_components, char *where)
-// {
-// 	ft_printf("========================%s=====================",where);
-// 	ft_printf("\n%d-has_exit;",map_components.count_exit);
-// 	ft_printf("\n%d-has_collectible;",map_components.count_collectibles);
-// 	ft_printf("\n%d-has_player_starting_position;",map_components.has_player_starting_position);
-// 	ft_printf("\n%d-has_valid_char;",map_components.has_valid_char);
-// 	ft_printf("\n%d-has_minimal_components;",map_components.has_minimal_components);
-// 	ft_printf("\nmap_dimensions-c:%d|r:%d;",map_components.map_dimensions.columns, map_components.map_dimensions.rows);
-// 	ft_printf("\n%d-is_rect;",map_components.is_rect);
-// 	ft_printf("\n%d-is_surrounded_by_wall;",map_components.is_surrounded_by_wall);
-// 	ft_printf("\n%d-is_valid_map;",map_components.is_valid_map);
-// }
-// void	print_map(t_map_dimensions map_dimensions, int is_valid_map)
-// {
-// 	int j = 0;
-// 	if (is_valid_map == FALSE)
-// 		return ;
-// 	while (j < map_dimensions.rows)
-// 	{
-// 		ft_printf("row:%d-%s\n", j, map_dimensions.map_matrix[j]);
-// 		j++;
-// 	}
-// }
-//##################

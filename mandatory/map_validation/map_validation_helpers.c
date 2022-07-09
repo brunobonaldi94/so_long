@@ -6,25 +6,11 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:48:57 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:09:31 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	is_valid_component(int component)
-{
-	return (component > 0);
-}
-
-int	is_valid_map_component(int component)
-{
-	if (component == MAP_COLLECTIBLE_CHAR || component == MAP_FLOOR_CHAR
-		|| component == MAP_EXIT_CHAR || component == MAP_PLAYER_CHAR
-		|| component == MAP_WALL_CHAR)
-		return (TRUE);
-	return (FALSE);
-}
 
 void	map_dimensions_init(t_map_dimensions *map_dimensions)
 {

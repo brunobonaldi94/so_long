@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 03:01:18 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 03:38:29 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 
 # define KEY_PRESS_EVENT 2
 # define DESTROY_NOTIFY_EVENT 17
-# define FOCUS_IN_EVENT 9
 
 # define KEY_SCAPE 0xff1b
 # define KEY_W 0x0077
@@ -58,15 +57,23 @@
 # define MAP_EXIT_CHAR 'E'
 # define MAP_PLAYER_CHAR 'P'
 
-# define SUCCES_CODE 1
+# define SUCCES_CODE 0
 # define ERROR_CODE 1
 # define MLX_ERROR 1
 # define MLX_ERROR_MESSAGE "MLX Error: There was an error in Minilibx Library!"
-# define FEW_ARGUMENTS_ERROR_MESSAGE "Too few arguments: You must run it\
+# define FEW_ARGUMENTS_ERROR_MESSAGE "Too few arguments: You must run it \
 with one map!"
 # define TOO_MANY_ARGUMENTS_ERROR_MESSAGE "Too many arguments: You must \
 run it with only one map!"
 # define INVALID_MAP_ERROR_MESSAGE "Invalid Map"
+# define NOT_FOUND_FILE_ERROR_MESSAGE "Map path location is not correct"
+# define MAP_IS_NOT_RECT_ERROR_MESSAGE "Map is not a rectangule"
+# define MAP_HAS_INVALID_CHAR_ERROR_MESSAGE "Map has a invalid character. \
+It's only allowed: 0 1 C E P!"
+# define MAP_IS_NOT_SURROUNDED_BY_WALL_ERROR_MESSAGE "Map must be surrounded \
+by wall."
+# define MAP_MUST_HAVE_MINIMAL_COMPONENTS_ERROR_MESSAGE "Map must have at \
+least one exit (E), one collectible (C) and one starting position (P)!"
 
 # define DEFAULT_PIXEL_SIZE	32
 # define IMG_WALL_PATH "../assets/images/wall.xpm"

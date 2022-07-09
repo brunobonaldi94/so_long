@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:36:33 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 00:35:41 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 03:46:24 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ int	main(int argc, char *argv[])
 	map_path = argv[1];
 	mlx.map_dimensions = read_map(&mlx, map_path);
 	if (!mlx.map_dimensions.map_matrix)
-		return (exit_with_message(ERROR_CODE, INVALID_MAP_ERROR_MESSAGE));
+	{
+		print_map_error(&mlx);
+		return (ERROR_CODE);
+	}
 	init_mlx(&mlx);
 	map_characters_load(&mlx);
 	map_render(&mlx);

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:59:16 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:40:00 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void				assign_map_dimensions(t_map_dimensions *map_dimensions,
 						t_valid_components map_components);
 int					is_valid_map_component(int component);
 int					is_valid_component(int component);
+int					map_has_minimal_components(
+						t_valid_components *map_components);
+int					is_rectangule(t_valid_components *map_components);
 int					check_is_valid_map(t_valid_components *map_components);
 void				check_map_validators(t_valid_components *map_components,
 						char *map_line, int is_eof);

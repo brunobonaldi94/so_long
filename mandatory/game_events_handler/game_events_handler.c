@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 04:40:52 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/09 02:30:07 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	deal_key_press(int key, t_data *mlx)
 
 void	handle_events(t_data *mlx)
 {
-	mlx_hook(mlx->win_ptr, FOCUS_IN_EVENT, (1 << 21), &map_re_render, mlx);
+	mlx_expose_hook(mlx->win_ptr, &map_re_render, mlx);
 	mlx_hook(mlx->win_ptr, KEY_PRESS_EVENT, (1L << 0), &deal_key_press, mlx);
 	mlx_hook(mlx->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), &game_exit, mlx);
 }
