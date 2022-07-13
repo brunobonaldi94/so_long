@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:46:53 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 00:32:27 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 	}
 	image_put(mlx, &mlx->img_player);
 	update_map_matrix(mlx, &mlx->img_player);
-	put_moves_to_window(mlx, mlx->game_play.count_moves++);
+	put_moves_to_window(mlx, ++mlx->game_play.count_moves);
 }
 
 void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)

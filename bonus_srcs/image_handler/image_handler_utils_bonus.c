@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:50:46 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:39:13 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,20 @@ void	image_put(t_data *mlx, t_xmp_img *img)
 	{
 		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img->mlx_img,
 			img->coordinates.x, img->coordinates.y);
+	}
+}
+
+void	render_put_img_ptr(t_data *mlx, void **mlx_img,
+			char *file_path, t_coordinates coordinates)
+{
+	int		width;
+	int		height;
+
+	if (mlx->win_ptr != NULL)
+	{
+		*mlx_img = mlx_xpm_file_to_image(mlx->mlx_ptr, file_path, &width,
+				&height);
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, *mlx_img,
+			coordinates.x, coordinates.y);
 	}
 }

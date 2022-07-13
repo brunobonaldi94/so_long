@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 23:46:09 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:54:20 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:38:22 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	put_moves_to_window(t_data *mlx, int moves)
 	i = 0;
 	while (moves_to_string[i])
 	{
-		coordinates_assign(&mlx->img_moves.coordinates, i * DEFAULT_PIXEL_SIZE,
+		coordinates_assign(&mlx->img_moves.coordinates,
+			(i + 1) * DEFAULT_PIXEL_SIZE,
 			mlx->map_dimensions.rows * DEFAULT_PIXEL_SIZE);
 		get_image_number_file(mlx, moves_to_string[i]);
 		i++;

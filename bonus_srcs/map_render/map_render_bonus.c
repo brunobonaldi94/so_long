@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:57:15 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:38:46 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,25 @@
 void	render_footer(t_data *mlx)
 {
 	int		j;
+	void	*mlx_move_img;
+	int		offset;
 
 	j = 0;
-	while (j < mlx->map_dimensions.columns)
+	mlx_move_img = NULL;
+	render_put_img_ptr(mlx, &mlx_move_img, IMG_MOVES_PATH,
+		(t_coordinates){j++, mlx->map_dimensions.rows * DEFAULT_PIXEL_SIZE});
+	offset = ft_get_nbr_elements(mlx->game_play.count_moves, 10);
+	while ((j + offset) < mlx->map_dimensions.columns)
 	{
-		coordinates_assign(&mlx->img_moves.coordinates, j * DEFAULT_PIXEL_SIZE,
+		coordinates_assign(&mlx->img_footer.coordinates,
+			(j + offset) * DEFAULT_PIXEL_SIZE,
 			mlx->map_dimensions.rows * DEFAULT_PIXEL_SIZE);
-		image_put(mlx, &mlx->img_moves);
+		image_put(mlx, &mlx->img_footer);
 		j++;
 	}
+	put_moves_to_window(mlx, mlx->game_play.count_moves);
+	if (mlx->win_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx_move_img);
 }
 
 void	render_map_component(t_data *mlx, t_xmp_img *img,

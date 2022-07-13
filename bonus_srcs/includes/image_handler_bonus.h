@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 01:03:40 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:55:49 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 00:59:39 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void		image_change_file_path(t_data *mlx, t_xmp_img *img,
 				char *file_path);
 void		map_characters_init(t_data *mlx);
 void		map_characters_load(t_data *mlx);
-
+void		render_put_img_ptr(t_data *mlx, void **mlx_img, char *file_path,
+				t_coordinates coordinates);
 #endif // IMAGE_HANDLER_BONUS_H

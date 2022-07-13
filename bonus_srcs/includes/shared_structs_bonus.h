@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:56:05 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:03:55 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_data
 	t_xmp_img			img_exit;
 	t_xmp_img			img_collectible;
 	t_xmp_img			img_moves;
+	t_xmp_img			img_footer;
 	t_map_dimensions	map_dimensions;
 }	t_data;
 

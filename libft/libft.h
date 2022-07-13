@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 03:14:41 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/06/29 04:07:57 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:32:36 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_ptr_free(void **ptr);
-
+int		ft_get_nbr_elements(int n, int base);
 #endif

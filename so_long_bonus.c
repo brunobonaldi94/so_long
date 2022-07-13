@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:36:33 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 03:30:02 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 01:42:03 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	init_mlx(t_data *mlx)
 	if (mlx->mlx_ptr == NULL)
 		return (exit_with_message(ERROR_CODE, MLX_ERROR_MESSAGE));
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->map_dimensions.columns
-			* DEFAULT_PIXEL_SIZE, (mlx->map_dimensions.rows + 1) * DEFAULT_PIXEL_SIZE,
+			* DEFAULT_PIXEL_SIZE, (mlx->map_dimensions.rows + 1)
+			* DEFAULT_PIXEL_SIZE,
 			GAME_NAME);
 	if (mlx->win_ptr == NULL)
 	{
