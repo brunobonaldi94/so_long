@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_events_handler.h                              :+:      :+:    :+:   */
+/*   game_events_handler_bonus.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/09 04:16:25 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:55:49 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_EVENTS_HANDLER_H
-# define GAME_EVENTS_HANDLER_H
+#ifndef GAME_EVENTS_HANDLER_BONUS_H
+# define GAME_EVENTS_HANDLER_BONUS_H
 
 int		deal_key_press(int key, t_data *mlx);
 int		deal_close(t_data *mlx);
@@ -25,5 +25,6 @@ int		is_there_an_object(t_data *mlx, t_xmp_img *img,
 int		is_in_map_boundaries(t_data *mlx,
 			t_coordinates coordinates_adder);
 void	update_map_matrix(t_data *mlx, t_xmp_img *img);
+void	put_moves_to_window(t_data *mlx, int moves);
 
-#endif //GAME_EVENTS_HANDLER_H
+#endif //GAME_EVENTS_HANDLER_BONUS_H

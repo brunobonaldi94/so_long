@@ -6,11 +6,25 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:57:15 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	render_footer(t_data *mlx)
+{
+	int		j;
+
+	j = 0;
+	while (j < mlx->map_dimensions.columns)
+	{
+		coordinates_assign(&mlx->img_moves.coordinates, j * DEFAULT_PIXEL_SIZE,
+			mlx->map_dimensions.rows * DEFAULT_PIXEL_SIZE);
+		image_put(mlx, &mlx->img_moves);
+		j++;
+	}
+}
 
 void	render_map_component(t_data *mlx, t_xmp_img *img,
 			t_map_dimensions *map_dimensions)
@@ -49,6 +63,7 @@ int	map_render(t_data *mlx)
 	render_map_component(mlx, &mlx->img_player, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_collectible, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_exit, &mlx->map_dimensions);
+	render_footer(mlx);
 	return (0);
 }
 

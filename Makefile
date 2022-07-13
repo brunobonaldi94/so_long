@@ -25,7 +25,7 @@ GAME_EXIT_BONUS_PATH = $(subst $(MANDATORY_PATH), $(BONUS_PATH), $(GAME_EXIT_PAT
 SRCS_BONUS = 	so_long_bonus.c \
 		$(addprefix $(MAP_VALIDATION_BONUS_PATH)/,	map_validation_bonus.c map_validation_helpers_bonus.c \
 													map_validation_checkers_bonus.c map_validation_helpers_II_bonus.c) \
-		$(addprefix $(GAME_EVENTS_HANDLER_BONUS_PATH)/, game_events_handler_bonus.c game_events_utils_bonus.c) \
+		$(addprefix $(GAME_EVENTS_HANDLER_BONUS_PATH)/, game_events_handler_bonus.c game_events_utils_bonus.c game_events_move_handler_bonus.c) \
 		$(addprefix $(MAP_RENDER_BONUS_PATH)/, map_render_bonus.c map_render_utils_bonus.c) \
 		$(addprefix $(GAME_EXIT_BONUS_PATH)/, game_exit_bonus.c game_exit_utils_bonus.c) \
 		$(addprefix $(IMAGE_RENDER_BONUS_PATH)/, image_handler_bonus.c image_handler_utils_bonus.c)

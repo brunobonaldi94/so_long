@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shared_structs.h                                   :+:      :+:    :+:   */
+/*   shared_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 04:17:43 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:56:05 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHARED_STRUCTS_H
-# define SHARED_STRUCTS_H
+#ifndef SHARED_STRUCTS_BONUS_H
+# define SHARED_STRUCTS_BONUS_H
 
 typedef struct s_coordinates
 {
@@ -81,6 +81,7 @@ typedef struct s_data
 	t_xmp_img			img_floor;
 	t_xmp_img			img_exit;
 	t_xmp_img			img_collectible;
+	t_xmp_img			img_moves;
 	t_map_dimensions	map_dimensions;
 }	t_data;
 
@@ -93,4 +94,4 @@ typedef struct s_rectangule
 	int	color;
 }	t_rectangule;
 
-#endif
+#endif //SHARED_STRUCTS_BONUS_H

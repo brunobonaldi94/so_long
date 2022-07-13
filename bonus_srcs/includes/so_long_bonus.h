@@ -6,12 +6,12 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:56:14 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "mlx.h"
 # include <stdlib.h>
@@ -76,11 +76,14 @@ by wall."
 least one exit (E), one collectible (C) and one starting position (P)!"
 
 # define DEFAULT_PIXEL_SIZE	32
-# define IMG_WALL_PATH "../assets/images/wall.xpm"
-# define IMG_ENEMY_PATH "../assets/images/enemy.xpm"
-# define IMG_COLLECTIBLE_PATH "../assets/images/collectable.xpm"
-# define IMG_FLOOR_PATH "../assets/images/floor.xpm"
-# define IMG_PLAYER_RIGHT_PATH "../assets/images/player_r.xpm"
-# define IMG_PLAYER_LEFT_PATH "../assets/images/player_l.xpm"
-# define IMG_EXIT_PATH "../assets/images/exit.xpm"
-#endif // SO_LONG_H
+# define IMG_WALL_PATH "../assets/images/game/wall.xpm"
+# define IMG_ENEMY_PATH "../assets/images/game/enemy.xpm"
+# define IMG_COLLECTIBLE_PATH "../assets/images/game/collectable.xpm"
+# define IMG_FLOOR_PATH "../assets/images/game/floor.xpm"
+# define IMG_PLAYER_RIGHT_PATH "../assets/images/game/player_r.xpm"
+# define IMG_PLAYER_LEFT_PATH "../assets/images/game/player_l.xpm"
+# define IMG_EXIT_PATH "../assets/images/game/exit.xpm"
+# define IMG_NUMBER_BASE_PATH "../assets/images/numbers/"
+# define IMG_FOOTER_PATH "../assets/images/numbers/footer.xpm"
+# define IMAGE_FILE_EXTENSION ".xpm"
+#endif // SO_LONG_BONUS_H

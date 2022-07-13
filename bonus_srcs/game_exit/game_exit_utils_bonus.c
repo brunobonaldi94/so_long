@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 03:06:07 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 22:44:19 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	destroy_images(t_data *mlx)
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_floor.mlx_img);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_player.mlx_img);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_wall.mlx_img);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img_moves.mlx_img);
 }

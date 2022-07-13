@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 04:53:09 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:46:53 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,6 @@ void	floor_replace_player(t_data *mlx)
 	mlx->img_floor.coordinates.y = mlx->img_player.coordinates.y;
 	mlx->img_floor.coordinates.x = mlx->img_player.coordinates.x;
 	image_put(mlx, &mlx->img_floor);
-}
-
-void	put_moves_window(t_data *mlx, int moves)
-{
-	char	*moves_to_string;
-	char	*moves_concat;
-	int 	i;
-
-	moves_to_string = ft_itoa(moves);
-	moves_concat = "moves:";
-	mlx_set_font(mlx->mlx_ptr, mlx->win_ptr, "-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, DEFAULT_PIXEL_SIZE,
-		(mlx->map_dimensions.rows + 1) * DEFAULT_PIXEL_SIZE, RED_PIXEL, moves_concat);
-	i = 0;
-	while (moves_to_string[i])
-	{
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, (2 + i) * DEFAULT_PIXEL_SIZE,
-		(mlx->map_dimensions.rows + 1) * DEFAULT_PIXEL_SIZE, RED_PIXEL, &moves_to_string[i]);
-		i++;
-	}
-	free(moves_to_string);
 }
 
 void	player_move(t_data *mlx, t_coordinates coordinates_adder)
@@ -57,9 +36,7 @@ void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 	}
 	image_put(mlx, &mlx->img_player);
 	update_map_matrix(mlx, &mlx->img_player);
-	//mlx->game_play.count_moves++;
-	//ft_printf("moves: %d\n", mlx->game_play.count_moves);
-	put_moves_window(mlx, mlx->game_play.count_moves++);
+	put_moves_to_window(mlx, mlx->game_play.count_moves++);
 }
 
 void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)

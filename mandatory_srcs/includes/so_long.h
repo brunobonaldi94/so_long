@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/09 03:38:29 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/12 21:24:35 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ by wall."
 least one exit (E), one collectible (C) and one starting position (P)!"
 
 # define DEFAULT_PIXEL_SIZE	32
-# define IMG_WALL_PATH "../assets/images/wall.xpm"
-# define IMG_ENEMY_PATH "../assets/images/enemy.xpm"
-# define IMG_COLLECTIBLE_PATH "../assets/images/collectable.xpm"
-# define IMG_FLOOR_PATH "../assets/images/floor.xpm"
-# define IMG_PLAYER_RIGHT_PATH "../assets/images/player_r.xpm"
-# define IMG_PLAYER_LEFT_PATH "../assets/images/player_l.xpm"
-# define IMG_EXIT_PATH "../assets/images/exit.xpm"
+# define IMG_WALL_PATH "../assets/images/game/wall.xpm"
+# define IMG_ENEMY_PATH "../assets/images/game/enemy.xpm"
+# define IMG_COLLECTIBLE_PATH "../assets/images/game/collectable.xpm"
+# define IMG_FLOOR_PATH "../assets/images/game/floor.xpm"
+# define IMG_PLAYER_RIGHT_PATH "../assets/images/game/player_r.xpm"
+# define IMG_PLAYER_LEFT_PATH "../assets/images/game/player_l.xpm"
+# define IMG_EXIT_PATH "../assets/images/game/exit.xpm"
 #endif // SO_LONG_H
