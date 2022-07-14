@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 01:03:55 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 03:03:38 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ least one exit (E), one collectible (C) and one starting position (P)!"
 # define IMG_NUMBER_ZERO_PATH "../assets/images/numbers/0.xpm"
 # define IMG_FOOTER_PATH "../assets/images/numbers/footer.xpm"
 # define IMG_MOVES_PATH "../assets/images/numbers/moves.xpm"
+# define IMG_ANIMATION_BASE_PATH \
+"../assets/images/game/animation/"
 # define IMAGE_FILE_EXTENSION ".xpm"
 #endif // SO_LONG_BONUS_H

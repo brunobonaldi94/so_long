@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 00:32:27 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/14 04:34:24 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,5 @@ void	handle_events(t_data *mlx)
 	mlx_expose_hook(mlx->win_ptr, &map_re_render, mlx);
 	mlx_hook(mlx->win_ptr, KEY_PRESS_EVENT, (1L << 0), &deal_key_press, mlx);
 	mlx_hook(mlx->win_ptr, DESTROY_NOTIFY_EVENT, (1L << 17), &game_exit, mlx);
+	mlx_loop_hook(mlx->mlx_ptr, &animate_collectible, mlx);
 }
