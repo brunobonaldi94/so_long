@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 04:05:54 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 01:05:45 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	is_rectangule(t_valid_components *map_components)
 	if (map_components->is_rect == FALSE)
 		return (FALSE);
 	if (map_components->map_dimensions.columns > 0
-		&& map_components->map_dimensions.rows > 0
-		&& map_components->map_dimensions.columns
-		!= map_components->map_dimensions.rows)
+		&& map_components->map_dimensions.rows > 0)
 		return (TRUE);
 	return (FALSE);
 }
