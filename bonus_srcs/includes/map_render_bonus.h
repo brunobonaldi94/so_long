@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 00:06:09 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:55:26 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 02:15:36 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int				map_render(t_data *mlx);
 int				map_re_render(t_data *mlx);
 void			map_character_render(t_data *mlx, t_xmp_img *img,
 					t_map_dimensions *map_dimensions);
-
+int				map_render_bonus(t_data *mlx);
 #endif //MAP_RENDER_BONUS_H

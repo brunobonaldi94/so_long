@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 01:28:57 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 01:39:37 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 02:57:59 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_get_nbr_elements(int n, int base)
 	int	itoa_elements;
 
 	itoa_elements = 0;
+	if (n == 0)
+		return (1);
 	while (n)
 	{
 		itoa_elements++;

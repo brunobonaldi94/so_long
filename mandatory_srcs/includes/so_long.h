@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 21:24:35 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 01:31:27 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "shared_structs.h"

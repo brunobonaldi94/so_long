@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:50:46 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 03:32:10 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 03:44:23 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_xmp_img	image_init(char *file_path, char map_char, int count)
 	img.coordinates.x = 0;
 	img.coordinates.y = 0;
 	img.map_char = map_char;
+	img.sprites_count = 0;
 	return (img);
 }
 

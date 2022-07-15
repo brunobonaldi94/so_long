@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 03:03:38 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 05:07:17 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <time.h>
 # include "shared_structs_bonus.h"
 # include "../libft/libft.h"
 # include "map_validation_bonus.h"
@@ -44,6 +44,9 @@
 # define KEY_RIGHT 0xFF53
 # define KEY_DOWN 0xFF54
 
+# define DEFAULT_DELAY 30
+# define COLLECTIBLE_SPRITES_COUNT 6
+
 # define RED_PIXEL 0xFF0000
 # define GREEN_PIXEL 0xFF00
 # define WHITE_PIXEL 0xFFFFFF
@@ -56,6 +59,7 @@
 # define MAP_COLLECTIBLE_CHAR 'C'
 # define MAP_EXIT_CHAR 'E'
 # define MAP_PLAYER_CHAR 'P'
+# define MAP_ENEMY_CHAR 'N'
 
 # define SUCCES_CODE 0
 # define ERROR_CODE 1
@@ -87,6 +91,8 @@ least one exit (E), one collectible (C) and one starting position (P)!"
 # define IMG_NUMBER_ZERO_PATH "../assets/images/numbers/0.xpm"
 # define IMG_FOOTER_PATH "../assets/images/numbers/footer.xpm"
 # define IMG_MOVES_PATH "../assets/images/numbers/moves.xpm"
+# define IMG_ENEMY_RIGHT_PATH "../assets/images/game/enemy_r.xpm"
+# define IMG_ENEMY_LEFT_PATH "../assets/images/game/enemy_l.xpm"
 # define IMG_ANIMATION_BASE_PATH \
 "../assets/images/game/animation/"
 # define IMAGE_FILE_EXTENSION ".xpm"

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 03:17:33 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 04:58:02 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		is_in_map_boundaries(t_data *mlx,
 			t_coordinates coordinates_adder);
 void	update_map_matrix(t_data *mlx, t_xmp_img *img);
 void	put_moves_to_window(t_data *mlx, int moves);
-int		animate_collectible(t_data *mlx);
+int		animate_handler(t_data *mlx);
+int		get_enemy_count(t_data *mlx);
 #endif //GAME_EVENTS_HANDLER_BONUS_H

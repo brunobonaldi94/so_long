@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 01:38:46 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 05:09:28 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,13 @@ int	map_render(t_data *mlx)
 	render_map_component(mlx, &mlx->img_player, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_collectible, &mlx->map_dimensions);
 	render_map_component(mlx, &mlx->img_exit, &mlx->map_dimensions);
+	render_map_component(mlx, &mlx->img_enemy, &mlx->map_dimensions);
 	render_footer(mlx);
 	return (0);
 }
 
 int	map_re_render(t_data *mlx)
-{
+{	
 	re_count_map_char(mlx);
 	free_coordinates(mlx);
 	map_render(mlx);

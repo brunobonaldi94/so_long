@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 00:59:57 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 01:03:55 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 04:56:02 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	map_characters_init(t_data *mlx)
 			mlx->map_components.count_exit);
 	mlx->img_moves = image_init(IMG_NUMBER_ZERO_PATH, '0', 1);
 	mlx->img_footer = image_init(IMG_FOOTER_PATH, 'F', 1);
+	mlx->img_enemy = image_init(IMG_ENEMY_RIGHT_PATH, MAP_ENEMY_CHAR,
+		get_enemy_count(mlx));
 }
 
 void	map_characters_load(t_data *mlx)
@@ -42,4 +44,5 @@ void	map_characters_load(t_data *mlx)
 	image_render(mlx, &mlx->img_wall);
 	image_render(mlx, &mlx->img_moves);
 	image_render(mlx, &mlx->img_footer);
+	image_render(mlx, &mlx->img_enemy);
 }

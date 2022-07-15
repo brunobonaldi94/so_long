@@ -26,7 +26,8 @@ SRCS_BONUS = 	so_long_bonus.c \
 		$(addprefix $(MAP_VALIDATION_BONUS_PATH)/,	map_validation_bonus.c map_validation_helpers_bonus.c \
 													map_validation_checkers_bonus.c map_validation_helpers_II_bonus.c) \
 		$(addprefix $(GAME_EVENTS_HANDLER_BONUS_PATH)/, game_events_handler_bonus.c game_events_utils_bonus.c \
-														game_events_move_handler_bonus.c game_events_animation_bonus.c) \
+														game_events_move_handler_bonus.c game_events_animation_bonus.c \
+														game_events_enemy_patrol_bonus.c) \
 		$(addprefix $(MAP_RENDER_BONUS_PATH)/, map_render_bonus.c map_render_utils_bonus.c) \
 		$(addprefix $(GAME_EXIT_BONUS_PATH)/, game_exit_bonus.c game_exit_utils_bonus.c) \
 		$(addprefix $(IMAGE_RENDER_BONUS_PATH)/, image_handler_bonus.c image_handler_utils_bonus.c)
@@ -39,7 +40,7 @@ LIBFT = libft.a
 LIBFT_FULL_PATH = $(addprefix $(SRCS_LIBFT_PATH),$(LIBFT))
 
 MLX_LINUX_PATH = ./mlx_linux/
-MLX = libmlx_Linux.a
+MLX = libmlx.a
 MLX_FULL_PATH = $(addprefix $(MLX_LINUX_PATH),$(MLX))
 
 NAME = so_long
@@ -68,20 +69,26 @@ all:	$(LIBFT_FULL_PATH) $(MLX_FULL_PATH) $(NAME)
 bonus:	$(LIBFT_FULL_PATH) $(MLX_FULL_PATH) $(NAME_BONUS)
 
 $(LIBFT_FULL_PATH):
+	@tput setaf 4
+	@echo COMPILING LIBFT
 	make bonus -C $(SRCS_LIBFT_PATH)
 	cp $(LIBFT_FULL_PATH) ./
 
 $(MLX_FULL_PATH):
 	@tput setaf 5
 	@echo COMPILING MLX
-	@cd $(MLX_LINUX_PATH) && ./configure && cd ../
+	@make -C $(MLX_LINUX_PATH)
 	@cp $(MLX_FULL_PATH) ./
 
 $(NAME):	$(OBJS)
+	@tput setaf 2
+	@echo COMPILING SO_LONG
 	$(CC) $(CFLAGS) $(OBJS) $(LIBRARY_MLX_PATH) \
 	$(INCLUDES_MLX_LINUX) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):	$(OBJS_BONUS)
+	@tput setaf 2
+	@echo COMPILING SO_LONG_BONUS
 	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBRARY_MLX_PATH) \
 	$(INCLUDES_MLX_LINUX) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME_BONUS)
 	\cp -r $(NAME_BONUS) $(NAME)
@@ -92,6 +99,7 @@ clean:
 
 fclean:	clean
 	make fclean -C $(SRCS_LIBFT_PATH)
+	make clean -C $(MLX_LINUX_PATH)
 	$(RM) $(NAME) $(NAME_BONUS) $(LIBFT) $(MLX)
 
 re:	fclean all

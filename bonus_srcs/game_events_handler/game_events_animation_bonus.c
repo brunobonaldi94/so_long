@@ -6,11 +6,22 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 02:56:48 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 04:37:46 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/15 04:10:35 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	add_delay(int number_of_seconds)
+{
+	int	milli_seconds;
+	clock_t start_time;
+
+	milli_seconds = 1000 * number_of_seconds;
+	start_time = clock();
+	while (clock() < start_time + milli_seconds)
+		;
+} 
 
 char	*get_dynamic_img_name(char *base_path, char *file_name, int index)
 {
@@ -30,47 +41,16 @@ char	*get_dynamic_img_name(char *base_path, char *file_name, int index)
 	return (full_file_path);
 }
 
-int	animate_collectible(t_data *mlx)
+int	animate_handler(t_data *mlx)
 {
-	int		count_of_steps;
-	char	*file_name;
-	int		i;
-	int		j;
-
-	count_of_steps = 6;
-	i = 0;
-	j = 0;
-	while (i < count_of_steps)
-	{
-		file_name =
-			get_dynamic_img_name(IMG_ANIMATION_BASE_PATH, "collectible", i);
-		j = 0;
-		while (j < mlx->img_collectible.count)
-		{
-			if(mlx->img_collectible.coordinates_list[j].x == 0 && 
-				mlx->img_collectible.coordinates_list[j].y == 0)
-			{
-				j++;
-				continue;
-			}
-			if (mlx->img_player.coordinates.x == mlx->img_collectible.coordinates_list[j].x 
-			&& mlx->img_player.coordinates.y == mlx->img_collectible.coordinates_list[j].y)
-			{
-				mlx->img_collectible.coordinates_list[j].x = 0;
-				mlx->img_collectible.coordinates_list[j].y = 0;
-				j++;
-				continue;
-			}
-			coordinates_assign(&mlx->img_collectible.coordinates,
-			mlx->img_collectible.coordinates_list[j].x,
-			mlx->img_collectible.coordinates_list[j].y);
-			image_change_file_path(mlx, &mlx->img_collectible, file_name);
-			image_put(mlx, &mlx->img_collectible);
-			j++;
-		}
-		free(file_name);
-		file_name = NULL;
-		i++;
-	}
+	char *file_name;
+	add_delay(DEFAULT_DELAY);
+	if (mlx->img_collectible.sprites_count == COLLECTIBLE_SPRITES_COUNT)
+		mlx->img_collectible.sprites_count = 0;
+	file_name = get_dynamic_img_name(IMG_ANIMATION_BASE_PATH, "collectible", 
+		mlx->img_collectible.sprites_count++);
+	image_change_file_path(mlx, &mlx->img_collectible, file_name);
+	map_re_render(mlx);
+	free(file_name);
 	return (0);
 }
