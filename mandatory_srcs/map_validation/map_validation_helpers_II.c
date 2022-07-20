@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 04:05:54 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 01:04:50 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/19 01:38:38 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,24 @@ int	is_rectangule(t_valid_components *map_components)
 		&& map_components->map_dimensions.rows > 0)
 		return (TRUE);
 	return (FALSE);
+}
+
+int	is_valid_extension(char *file_path)
+{
+	int		dot_position;
+	char	*file_extension;
+	int		is_valid_extension;
+
+	is_valid_extension = TRUE;
+	if (!file_path || !*file_path)
+		return (FALSE);
+	dot_position = ft_strrchr_pos(file_path, '.');
+	if (dot_position == -1)
+		return (FALSE);
+	file_extension = ft_substr(file_path, dot_position,
+			ft_strlen(file_path) - dot_position);
+	if (ft_strncmp(file_extension, ".ber", 4))
+		is_valid_extension = FALSE;
+	free(file_extension);
+	return (is_valid_extension);
 }

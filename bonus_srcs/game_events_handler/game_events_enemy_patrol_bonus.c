@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_enemy_patrol_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 04:19:34 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 05:06:12 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 02:20:12 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,38 @@ void	put_enemy_in_map(t_data *mlx, t_coordinates coordinates)
 		= MAP_ENEMY_CHAR;
 }
 
+int	put_enemy_count(t_data *mlx, t_coordinates c)
+{
+	int	count_enemy;
+
+	count_enemy = 0;
+	if (mlx->map_dimensions.map_matrix[c.y - 1][c.x] == MAP_FLOOR_CHAR)
+	{
+		put_enemy_in_map(mlx, (t_coordinates){c.x, c.y - 1});
+		count_enemy++;
+	}
+	else if (mlx->map_dimensions.map_matrix[c.y][c.x - 1] == MAP_FLOOR_CHAR)
+	{
+		put_enemy_in_map(mlx, (t_coordinates){c.x - 1, c.y});
+		count_enemy++;
+	}
+	else if (mlx->map_dimensions.map_matrix[c.y + 1][c.x] == MAP_FLOOR_CHAR)
+	{
+		put_enemy_in_map(mlx, (t_coordinates){c.x, c.y + 1});
+		count_enemy++;
+	}
+	else if (mlx->map_dimensions.map_matrix[c.y][c.x + 1] == MAP_FLOOR_CHAR)
+	{
+		put_enemy_in_map(mlx, (t_coordinates){c.x + 1, c.y});
+		count_enemy++;
+	}
+	return (count_enemy);
+}
+
 int	get_enemy_count(t_data *mlx)
 {
-	t_coordinates c;
-	t_coordinates new_c;
-	int count_enemy;
+	t_coordinates	c;
+	int				count_enemy;
 
 	c.y = 0;
 	count_enemy = 0;
@@ -34,38 +61,7 @@ int	get_enemy_count(t_data *mlx)
 			if (mlx->map_dimensions.map_matrix[c.y][c.x]
 				== MAP_COLLECTIBLE_CHAR)
 			{
-				if (mlx->map_dimensions.map_matrix[c.y - 1][c.x]
-					== MAP_FLOOR_CHAR)
-				{
-					new_c.x = c.x;
-					new_c.y = c.y - 1;
-					put_enemy_in_map(mlx, new_c);
-					count_enemy++;
-				}
-				else if (mlx->map_dimensions.map_matrix[c.y][c.x - 1]
-					== MAP_FLOOR_CHAR)
-				{
-					new_c.x = c.x  - 1;
-					new_c.y = c.y;
-					put_enemy_in_map(mlx, new_c);
-					count_enemy++;
-				}
-				else if (mlx->map_dimensions.map_matrix[c.y + 1][c.x]
-					== MAP_FLOOR_CHAR)
-				{
-					new_c.x = c.x;
-					new_c.y = c.y + 1;
-					put_enemy_in_map(mlx, new_c);
-					count_enemy++;
-				}
-				else if (mlx->map_dimensions.map_matrix[c.y][c.x + 1]
-					== MAP_FLOOR_CHAR)
-				{
-					new_c.x = c.x  + 1;
-					new_c.y = c.y;
-					put_enemy_in_map(mlx, new_c);
-					count_enemy++;
-				}
+				count_enemy += put_enemy_count(mlx, c);
 			}
 			c.x++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 01:31:27 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 03:06:04 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ It's only allowed: 0 1 C E P!"
 by wall."
 # define MAP_MUST_HAVE_MINIMAL_COMPONENTS_ERROR_MESSAGE "Map must have at \
 least one exit (E), one collectible (C) and one starting position (P)!"
+# define WRONG_FILE_EXTENSION_ERROR_MESSAGE "Map must have .ber file extension"
+# define MAP_HAS_MORE_PLAYER_ERROR_MESSAGE "Map cannot contain more than \
+one player"
 
 # define DEFAULT_PIXEL_SIZE	32
 # define IMG_WALL_PATH "../assets/images/game/wall.xpm"

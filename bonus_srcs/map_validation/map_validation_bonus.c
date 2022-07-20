@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/19 02:07:31 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_list	*read_map_from_file(char *file_path)
 	t_list	*head_map;
 	t_list	*node_map;
 
+	if (is_valid_extension(file_path) == FALSE)
+		exit_with_message(ERROR_CODE, WRONG_FILE_EXTENSION_ERROR_MESSAGE);
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		exit_with_message(ERROR_CODE, NOT_FOUND_FILE_ERROR_MESSAGE);

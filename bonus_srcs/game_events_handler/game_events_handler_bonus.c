@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_handler_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 03:46:05 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 02:13:17 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	floor_replace_player(t_data *mlx)
+void	floor_replacer(t_data *mlx,	t_xmp_img *img)
 {
-	mlx->img_floor.coordinates.y = mlx->img_player.coordinates.y;
-	mlx->img_floor.coordinates.x = mlx->img_player.coordinates.x;
+	mlx->img_floor.coordinates.y = img->coordinates.y;
+	mlx->img_floor.coordinates.x = img->coordinates.x;
 	image_put(mlx, &mlx->img_floor);
 }
 
 void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 {
-	floor_replace_player(mlx);
+	floor_replacer(mlx, &mlx->img_player);
 	update_map_matrix(mlx, &mlx->img_floor);
 	calculate_new_coordinates(&mlx->img_player, coordinates_adder);
 	if (coordinates_adder.x < 0 && mlx->img_player.is_right == TRUE)
@@ -44,7 +44,8 @@ void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)
 	if (!is_in_map_boundaries(mlx, coordinates_adder)
 		|| is_there_an_object(mlx, &mlx->img_wall, coordinates_adder)
 		|| (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
-			&& mlx->game_play.can_exit == FALSE))
+			&& mlx->game_play.can_exit == FALSE)
+		|| mlx->game_play.game_over == TRUE)
 		return ;
 	if (is_there_an_object(mlx, &mlx->img_collectible, coordinates_adder))
 	{
@@ -55,6 +56,11 @@ void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)
 	else if (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
 		&& mlx->game_play.can_exit == TRUE)
 		game_exit(mlx);
+	else if (is_there_an_object(mlx, &mlx->img_enemy, coordinates_adder))
+	{
+		mlx->game_play.game_over = TRUE;
+		return ;
+	}
 	player_move(mlx, coordinates_adder);
 }
 

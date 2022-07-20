@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 05:07:17 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 03:05:48 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define KEY_RIGHT 0xFF53
 # define KEY_DOWN 0xFF54
 
-# define DEFAULT_DELAY 30
+# define DEFAULT_DELAY 20
 # define COLLECTIBLE_SPRITES_COUNT 6
 
 # define RED_PIXEL 0xFF0000
@@ -78,8 +78,11 @@ It's only allowed: 0 1 C E P!"
 by wall."
 # define MAP_MUST_HAVE_MINIMAL_COMPONENTS_ERROR_MESSAGE "Map must have at \
 least one exit (E), one collectible (C) and one starting position (P)!"
+# define WRONG_FILE_EXTENSION_ERROR_MESSAGE "Map must have .ber file extension"
+# define MAP_HAS_MORE_PLAYER_ERROR_MESSAGE "Map cannot contain more than \
+one player"
 
-# define DEFAULT_PIXEL_SIZE	32
+# define DEFAULT_PIXEL_SIZE 32
 # define IMG_WALL_PATH "../assets/images/game/wall.xpm"
 # define IMG_ENEMY_PATH "../assets/images/game/enemy.xpm"
 # define IMG_COLLECTIBLE_PATH "../assets/images/game/collectable.xpm"
@@ -93,7 +96,6 @@ least one exit (E), one collectible (C) and one starting position (P)!"
 # define IMG_MOVES_PATH "../assets/images/numbers/moves.xpm"
 # define IMG_ENEMY_RIGHT_PATH "../assets/images/game/enemy_r.xpm"
 # define IMG_ENEMY_LEFT_PATH "../assets/images/game/enemy_l.xpm"
-# define IMG_ANIMATION_BASE_PATH \
-"../assets/images/game/animation/"
+# define IMG_ANIMATION_BASE_PATH "../assets/images/game/animation/"
 # define IMAGE_FILE_EXTENSION ".xpm"
 #endif // SO_LONG_BONUS_H

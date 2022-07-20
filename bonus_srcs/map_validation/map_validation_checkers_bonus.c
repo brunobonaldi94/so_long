@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_checkers_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 03:06:28 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ void	check_minimal_components(t_valid_components *map_components,
 	else if (component == MAP_EXIT_CHAR)
 		map_components->count_exit++;
 	else if (component == MAP_PLAYER_CHAR)
+	{
+		if (map_components->has_player_starting_position == TRUE)
+		{
+			map_components->has_player_starting_position++;
+			map_components->is_valid_map = FALSE;
+			return ;
+		}
 		map_components->has_player_starting_position = TRUE;
+	}
 	else if (component == MAP_WALL_CHAR)
 		map_components->count_walls++;
 	else if (component == MAP_FLOOR_CHAR)

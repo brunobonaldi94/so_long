@@ -1,5 +1,6 @@
 *.o
 so_long
+so_long_bonus
 .vscode/
 *.a
 /ft_printf*

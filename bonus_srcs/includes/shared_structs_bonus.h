@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shared_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/15 04:20:40 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 01:44:53 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_game_play
 	int	count_moves;
 	int	start_count_collectibles;
 	int	can_exit;
+	int	game_over;
 }	t_game_play;
 
 typedef struct s_data

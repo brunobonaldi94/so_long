@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_utils_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:33:11 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/10 00:36:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 02:13:14 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

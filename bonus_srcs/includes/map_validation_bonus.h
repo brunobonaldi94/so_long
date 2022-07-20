@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/12 23:56:33 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/19 01:39:11 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void				check_is_rectangule(t_valid_components *map_components,
 void				check_minimal_components(t_valid_components *map_components,
 						char component);
 void				destroy_map_matrix(t_map_dimensions *map_dimensions);
-
+int					is_valid_extension(char *file_path);
 #endif //MAP_VALIDATION_BONUS_H
