@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_animation_helpers_bonus.c              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:33:11 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 02:12:29 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 04:09:02 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ int	generate_random_int(int min, int max)
 	srand(time(NULL));
 	random_nbr = (rand() % (max + 1 - min)) + min;
 	return (random_nbr);
+}
+
+void	put_dead_player(t_data *mlx)
+{
+	mlx->game_play.game_over = TRUE;
+	image_change_file_path(mlx, &mlx->img_player, IMG_DEAD_PLAYER_PATH);
+	image_put(mlx, &mlx->img_player);
 }

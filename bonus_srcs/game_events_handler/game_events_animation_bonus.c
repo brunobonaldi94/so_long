@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_animation_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 02:56:48 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 02:40:15 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 04:09:02 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	move_enemy_and_check_game_over(t_data *mlx, t_coordinates c)
 		|| mlx->map_dimensions.map_matrix[c.y + 1][c.x] == MAP_PLAYER_CHAR
 		|| mlx->map_dimensions.map_matrix[c.y][c.x - 1] == MAP_PLAYER_CHAR
 		|| mlx->map_dimensions.map_matrix[c.y][c.x + 1] == MAP_PLAYER_CHAR)
-		mlx->game_play.game_over = TRUE;
+			put_dead_player(mlx);
 }
 
 void	move_random_direction_enemy(t_data *mlx, int direction, t_coordinates c)

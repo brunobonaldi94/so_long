@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 03:05:48 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 03:56:35 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ one player"
 # define IMG_NUMBER_ZERO_PATH "../assets/images/numbers/0.xpm"
 # define IMG_FOOTER_PATH "../assets/images/numbers/footer.xpm"
 # define IMG_MOVES_PATH "../assets/images/numbers/moves.xpm"
+# define IMG_DEAD_PLAYER_PATH "../assets/images/game/dead.xpm"
 # define IMG_ENEMY_RIGHT_PATH "../assets/images/game/enemy_r.xpm"
 # define IMG_ENEMY_LEFT_PATH "../assets/images/game/enemy_l.xpm"
 # define IMG_ANIMATION_BASE_PATH "../assets/images/game/animation/"

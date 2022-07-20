@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_events_handler_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 02:13:17 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 04:09:02 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)
 		game_exit(mlx);
 	else if (is_there_an_object(mlx, &mlx->img_enemy, coordinates_adder))
 	{
-		mlx->game_play.game_over = TRUE;
+		put_dead_player(mlx);
 		return ;
 	}
 	player_move(mlx, coordinates_adder);
