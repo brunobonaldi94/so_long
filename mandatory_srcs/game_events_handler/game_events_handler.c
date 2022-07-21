@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:24:00 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/09 02:30:07 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:41:51 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ void	player_move(t_data *mlx, t_coordinates coordinates_adder)
 void	player_move_validate(t_data *mlx, t_coordinates coordinates_adder)
 {
 	if (!is_in_map_boundaries(mlx, coordinates_adder)
-		|| is_there_an_object(mlx, &mlx->img_wall, coordinates_adder)
-		|| (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
+		|| is_there_an_object(mlx, mlx->img_wall.map_char, coordinates_adder)
+		|| (is_there_an_object(mlx, mlx->img_exit.map_char, coordinates_adder)
 			&& mlx->game_play.can_exit == FALSE))
 		return ;
-	if (is_there_an_object(mlx, &mlx->img_collectible, coordinates_adder))
+	if (is_there_an_object(mlx, mlx->img_collectible.map_char,
+			coordinates_adder))
 	{
 		mlx->game_play.start_count_collectibles--;
 		if (mlx->game_play.start_count_collectibles == 0)
 			mlx->game_play.can_exit = TRUE;
 	}
-	else if (is_there_an_object(mlx, &mlx->img_exit, coordinates_adder)
+	else if (is_there_an_object(mlx, mlx->img_exit.map_char, coordinates_adder)
 		&& mlx->game_play.can_exit == TRUE)
 		game_exit(mlx);
 	player_move(mlx, coordinates_adder);

@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:33:11 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 04:41:01 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:43:34 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,17 @@ void	calculate_new_coordinates(t_xmp_img *img,
 	img->coordinates.y += coordinates_adder.y;
 }
 
-int	is_there_an_object(t_data *mlx, t_xmp_img *img,
+int	is_there_an_object(t_data *mlx, char map_char,
 			t_coordinates coordinates_adder)
 {
 	t_coordinates	new_cordinates;
-	int				i;
 
-	i = 0;
 	coordinates_assign(&new_cordinates, mlx->img_player.coordinates.x
 		+ coordinates_adder.x,
 		mlx->img_player.coordinates.y + coordinates_adder.y);
-	while (i < img->count)
-	{
-		if (img->coordinates_list[i].x == new_cordinates.x
-			&& img->coordinates_list[i].y == new_cordinates.y)
-		{
-			if (img->map_char == MAP_COLLECTIBLE_CHAR)
-			{
-				img->coordinates_list[i].x = 0;
-				img->coordinates_list[i].y = 0;
-			}
-			return (1);
-		}
-		i++;
-	}
+	if (mlx->map_dimensions.map_matrix[new_cordinates.y / DEFAULT_PIXEL_SIZE]
+		[new_cordinates.x / DEFAULT_PIXEL_SIZE] == map_char)
+		return (1);
 	return (0);
 }
 

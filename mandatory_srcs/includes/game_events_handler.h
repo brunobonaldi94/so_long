@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:32:20 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/09 04:16:25 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/20 23:58:56 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	destroy_display(t_data *mlx);
 void	coordinates_assign(t_coordinates *coordinates, int x, int y);
 void	calculate_new_coordinates(t_xmp_img *img,
 			t_coordinates coordinates_adder);
-int		is_there_an_object(t_data *mlx, t_xmp_img *img,
+int		is_there_an_object(t_data *mlx, char map_char,
 			t_coordinates coordinates_adder);
 int		is_in_map_boundaries(t_data *mlx,
 			t_coordinates coordinates_adder);

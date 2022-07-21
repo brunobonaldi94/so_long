@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:50:46 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/02 18:52:59 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:03:09 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_xmp_img	image_init(char *file_path, char map_char, int count)
 	img.width = 0;
 	img.count = count;
 	img.is_right = TRUE;
-	img.coordinates_list = NULL;
 	img.relative_path = file_path;
 	img.mlx_img = NULL;
 	img.coordinates.x = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_helpers_II_bonus.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 04:05:54 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 02:04:54 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:16:23 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

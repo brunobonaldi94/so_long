@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 04:17:43 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:01:12 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_img
 typedef struct s_xmp_img
 {
 	t_coordinates	coordinates;
-	t_coordinates	*coordinates_list;
 	int				is_right;
 	int				count;
 	int				width;

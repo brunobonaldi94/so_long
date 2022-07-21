@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 03:06:07 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/08 04:41:32 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:03:47 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,8 @@ void	destroy_display(t_data *mlx)
 	free(mlx->mlx_ptr);
 }
 
-void	free_coordinates(t_data *mlx)
-{
-	free(mlx->img_collectible.coordinates_list);
-	free(mlx->img_exit.coordinates_list);
-	free(mlx->img_floor.coordinates_list);
-	free(mlx->img_player.coordinates_list);
-	free(mlx->img_wall.coordinates_list);
-}
-
 void	destroy_images(t_data *mlx)
 {
-	free_coordinates(mlx);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_collectible.mlx_img);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_exit.mlx_img);
 	mlx_destroy_image(mlx->mlx_ptr, mlx->img_floor.mlx_img);

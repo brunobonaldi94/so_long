@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shared_structs_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 00:48:13 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 01:44:53 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:16:35 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

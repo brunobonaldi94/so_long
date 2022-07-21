@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 02:56:48 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 04:09:02 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/21 03:06:09 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ char	*get_dynamic_img_name(char *base_path, char *file_name, int index)
 void	move_enemy_and_check_game_over(t_data *mlx, t_coordinates c)
 {
 	put_enemy_in_map(mlx, c);
-	if (mlx->map_dimensions.map_matrix[c.y - 1][c.x] == MAP_PLAYER_CHAR
-		|| mlx->map_dimensions.map_matrix[c.y + 1][c.x] == MAP_PLAYER_CHAR
-		|| mlx->map_dimensions.map_matrix[c.y][c.x - 1] == MAP_PLAYER_CHAR
+	if (mlx->map_dimensions.map_matrix[c.y][c.x - 1] == MAP_PLAYER_CHAR
 		|| mlx->map_dimensions.map_matrix[c.y][c.x + 1] == MAP_PLAYER_CHAR)
-			put_dead_player(mlx);
+		put_dead_player(mlx);
 }
 
 void	move_random_direction_enemy(t_data *mlx, int direction, t_coordinates c)

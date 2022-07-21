@@ -39,34 +39,28 @@ SRCS_LIBFT_PATH = ./libft/
 LIBFT = libft.a
 LIBFT_FULL_PATH = $(addprefix $(SRCS_LIBFT_PATH),$(LIBFT))
 
-MLX_LINUX_PATH = ./mlx_linux/
-MLX = libmlx.a
-MLX_FULL_PATH = $(addprefix $(MLX_LINUX_PATH),$(MLX))
-
 NAME = so_long
-INCLUDES_MLX_LINUX = -Imlx_linux
 INCLUDES_USR = -I./usr/include
 INCLUDES = -I$(SRCS_LIBFT_PATH)includes -I$(SRCS_LIBFT_PATH) -I$(addprefix $(MANDATORY_PATH)/, includes)
 
 NAME_BONUS = so_long_bonus
 INCLUDES_BONUS = -I$(SRCS_LIBFT_PATH)includes -I$(SRCS_LIBFT_PATH) -I$(addprefix $(BONUS_PATH)/, includes)
 
-LIBRARY_MLX_PATH = -Lmlx_linux -lmlx_Linux -L/usr/lib
-LIBRARIES_MLX = -lXext -lX11 -lm -lz
+LIBRARIES_MLX = -lmlx -lXext -lX11 -lm -lz
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 %.o:	%.c
-	$(CC) $(CFLAGS) $(INCLUDES_MLX_LINUX) $(INCLUDES_USR) $(INCLUDES) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES_USR) $(INCLUDES) -O3 -c $< -o $@
 
 %_bonus.o:	%_bonus.c
-	$(CC) $(CFLAGS) $(INCLUDES_MLX_LINUX) $(INCLUDES_USR) $(INCLUDES_BONUS) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES_USR) $(INCLUDES_BONUS) -O3 -c $< -o $@
 
-all:	$(LIBFT_FULL_PATH) $(MLX_FULL_PATH) $(NAME)
+all:	$(LIBFT_FULL_PATH) $(NAME)
 
-bonus:	$(LIBFT_FULL_PATH) $(MLX_FULL_PATH) $(NAME_BONUS)
+bonus:	$(LIBFT_FULL_PATH) $(NAME_BONUS)
 
 $(LIBFT_FULL_PATH):
 	@tput setaf 4
@@ -74,23 +68,15 @@ $(LIBFT_FULL_PATH):
 	make bonus -C $(SRCS_LIBFT_PATH)
 	cp $(LIBFT_FULL_PATH) ./
 
-$(MLX_FULL_PATH):
-	@tput setaf 5
-	@echo COMPILING MLX
-	@make -C $(MLX_LINUX_PATH)
-	@cp $(MLX_FULL_PATH) ./
-
 $(NAME):	$(OBJS)
 	@tput setaf 2
 	@echo COMPILING SO_LONG
-	$(CC) $(CFLAGS) $(OBJS) $(LIBRARY_MLX_PATH) \
-	$(INCLUDES_MLX_LINUX) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME)
 
 $(NAME_BONUS):	$(OBJS_BONUS)
 	@tput setaf 2
 	@echo COMPILING SO_LONG_BONUS
-	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBRARY_MLX_PATH) \
-	$(INCLUDES_MLX_LINUX) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBRARIES_MLX) $(LIBFT) -o $(NAME_BONUS)
 	\cp -r $(NAME_BONUS) $(NAME)
 
 clean:
@@ -99,8 +85,7 @@ clean:
 
 fclean:	clean
 	make fclean -C $(SRCS_LIBFT_PATH)
-	make clean -C $(MLX_LINUX_PATH)
-	$(RM) $(NAME) $(NAME_BONUS) $(LIBFT) $(MLX)
+	$(RM) $(NAME) $(NAME_BONUS) $(LIBFT)
 
 re:	fclean all
 
