@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 02:56:48 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/22 04:14:02 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/22 04:20:42 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	move_enemy(t_data *mlx)
 {
 	int				i;
 	t_coordinates	c;
+
 	if (mlx->img_enemy.count == 0)
 		return (1);
 	i = generate_random_int(0, mlx->img_enemy.count - 1);
