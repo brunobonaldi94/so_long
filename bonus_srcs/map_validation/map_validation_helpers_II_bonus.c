@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 04:05:54 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/21 00:16:23 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/22 02:21:44 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	is_valid_extension(char *file_path)
 		return (FALSE);
 	file_extension = ft_substr(file_path, dot_position,
 			ft_strlen(file_path) - dot_position);
-	if (ft_strncmp(file_extension, ".ber", 4))
+	if (ft_strncmp(file_extension, ".ber", 5))
 		is_valid_extension = FALSE;
 	free(file_extension);
 	return (is_valid_extension);

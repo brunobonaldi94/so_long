@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_checkers.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:30:56 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 03:02:31 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/22 03:19:14 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_minimal_components(t_valid_components *map_components,
 }
 
 void	check_is_rectangule(t_valid_components *map_components,
-			t_map_dimensions current_map_dimensions, int is_eof)
+			t_map_dimensions current_map_dimensions)
 {
 	int	columns;
 	int	rows;
@@ -50,19 +50,18 @@ void	check_is_rectangule(t_valid_components *map_components,
 	columns = current_map_dimensions.columns;
 	rows = current_map_dimensions.rows;
 	if (columns != map_components->map_dimensions.columns
-		&& rows != 0 && is_eof == FALSE)
+		&& rows != 0)
 	{
 		map_components->is_rect = FALSE;
 		map_components->is_valid_map = FALSE;
 		return ;
 	}
-	if (is_eof == FALSE)
-		map_components->map_dimensions.columns = columns;
+	map_components->map_dimensions.columns = columns;
 	map_components->map_dimensions.rows++;
 }
 
 void	check_is_surrounded_by_wall(t_valid_components *map_components,
-			t_map_dimensions current_map_dimensions, char component)
+			t_map_dimensions current_map_dimensions, char component, int is_eof)
 {
 	int	current_column;
 	int	current_row;
@@ -75,9 +74,11 @@ void	check_is_surrounded_by_wall(t_valid_components *map_components,
 		is_valid = FALSE;
 	if (current_column == 0 && component != MAP_WALL_CHAR)
 		is_valid = FALSE;
-	if (map_components->map_dimensions.columns == current_column
+	if (map_components->map_dimensions.columns == (current_column + 1)
 		&& map_components->map_dimensions.columns != 0
 		&& component != MAP_WALL_CHAR)
+		is_valid = FALSE;
+	if (is_eof == TRUE && component != MAP_WALL_CHAR)
 		is_valid = FALSE;
 	if (is_valid == FALSE)
 	{
@@ -103,11 +104,11 @@ void	check_map_validators(t_valid_components *map_components,
 		}
 		check_minimal_components(map_components, *map_line);
 		check_is_surrounded_by_wall(map_components, current_map_dimensions,
-			*map_line);
+			*map_line, is_eof);
 		map_line++;
 		current_map_dimensions.columns++;
 	}
-	check_is_rectangule(map_components, current_map_dimensions, is_eof);
+	check_is_rectangule(map_components, current_map_dimensions);
 }
 
 int	check_is_valid_map(t_valid_components *map_components)

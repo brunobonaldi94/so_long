@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:06 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/21 02:51:06 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/22 04:11:48 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	render_map_component(t_data *mlx, t_xmp_img *img,
 
 	counters.y = -1;
 	count = 0;
-	if (img->map_char == MAP_ENEMY_CHAR)
+	if (img->map_char == MAP_ENEMY_CHAR && img->count > 0)
 		img->coordinates_list = (t_coordinates *)malloc(sizeof(t_coordinates)
 				* img->count);
 	while (++counters.y < map_dimensions->rows)
@@ -58,7 +58,7 @@ void	render_map_component(t_data *mlx, t_xmp_img *img,
 				img->coordinates.x = (counters.x * DEFAULT_PIXEL_SIZE);
 				img->coordinates.y = (counters.y * DEFAULT_PIXEL_SIZE);
 				image_put(mlx, img);
-				if (img->map_char == MAP_ENEMY_CHAR)
+				if (img->map_char == MAP_ENEMY_CHAR && img->count > 0)
 					img->coordinates_list[count++]
 						= save_coordinates(img->coordinates);
 			}

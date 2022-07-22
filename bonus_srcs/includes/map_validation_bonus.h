@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:30 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/19 01:39:11 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/22 03:24:04 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void				check_map_validators(t_valid_components *map_components,
 void				check_is_surrounded_by_wall(
 						t_valid_components *map_components,
 						t_map_dimensions current_map_dimensions,
-						char component);
+						char component, int is_eof);
 void				check_is_rectangule(t_valid_components *map_components,
-						t_map_dimensions current_map_dimensions, int is_eof);
+						t_map_dimensions current_map_dimensions);
 void				check_minimal_components(t_valid_components *map_components,
 						char component);
 void				destroy_map_matrix(t_map_dimensions *map_dimensions);

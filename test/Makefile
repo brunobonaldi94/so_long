@@ -6,8 +6,8 @@ VALGRIND = valgrind -s --leak-check=full --show-leak-kinds=all --gen-suppression
 
 all:	$(NAME)
 
-MAP_FILE = ../assets/maps/complex_map.ber
-#complex_map.ber  giant_map.ber  invalid_char_map.ber  no_collectible.ber  no_exit.ber  no_player.ber  not_rectangule.ber  not_surrounded_by_wall.ber  simple_map.ber  square_map.ber
+MAP_FILE = ../assets/maps/map1.ber
+#complex_map.ber  giant_map.ber  invalid_char_map.ber  no_collectible.ber  no_exit.ber  no_player.ber  not_rectangule.ber  not_surrounded_by_wall.ber  simple_map.ber  square_map.ber invalid_map.ber big.ber
 NORMINETTES_PATH = $(shell find ../ -maxdepth 1 -type d ! -path '../.*' ! -path '../' ! -path '../test' ! -path '../utils' | grep -v mlx_linux | tr '\n' ' ')
 
 $(NAME):
