@@ -37,6 +37,7 @@ typedef struct s_valid_components
 	int					has_minimal_components;
 	t_map_dimensions	map_dimensions;
 	int					is_rect;
+	int					has_empty_line;
 	int					is_surrounded_by_wall;
 	int					is_valid_map;
 }	t_valid_components;

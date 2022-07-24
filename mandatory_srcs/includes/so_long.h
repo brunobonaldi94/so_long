@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/20 03:06:04 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:43:25 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define MLX_WINDOW_WIDTH 1280
 # define MLX_WINDOW_HEIGHT 720
 # define GAME_NAME "so_long bbonaldi"
+# define GAME_START_MESSAGE "Game has started!"
 
 # define KEY_PRESS_EVENT 2
 # define DESTROY_NOTIFY_EVENT 17
@@ -66,7 +67,7 @@ with one map!"
 run it with only one map!"
 # define INVALID_MAP_ERROR_MESSAGE "Invalid Map"
 # define NOT_FOUND_FILE_ERROR_MESSAGE "Map path location is not correct"
-# define MAP_IS_NOT_RECT_ERROR_MESSAGE "Map is not a rectangule"
+# define MAP_IS_NOT_RECT_ERROR_MESSAGE "Map is not a rectangule!"
 # define MAP_HAS_INVALID_CHAR_ERROR_MESSAGE "Map has a invalid character. \
 It's only allowed: 0 1 C E P!"
 # define MAP_IS_NOT_SURROUNDED_BY_WALL_ERROR_MESSAGE "Map must be surrounded \
@@ -76,6 +77,7 @@ least one exit (E), one collectible (C) and one starting position (P)!"
 # define WRONG_FILE_EXTENSION_ERROR_MESSAGE "Map must have .ber file extension"
 # define MAP_HAS_MORE_PLAYER_ERROR_MESSAGE "Map cannot contain more than \
 one player"
+# define MAP_HAS_EMPTY_LINE_ERROR_MESSAGE "Map has an empty line!"
 
 # define DEFAULT_PIXEL_SIZE	32
 # define IMG_WALL_PATH "../assets/images/game/wall.xpm"

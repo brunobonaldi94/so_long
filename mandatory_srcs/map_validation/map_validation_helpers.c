@@ -33,6 +33,7 @@ void	map_components_init(t_valid_components *map_components)
 	map_components->has_minimal_components = -1;
 	map_components->has_valid_char = -1;
 	map_components->is_surrounded_by_wall = -1;
+	map_components->has_empty_line = -1;
 	map_components->is_valid_map = -1;
 }
 

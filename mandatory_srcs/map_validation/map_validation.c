@@ -46,7 +46,21 @@ void	create_map_matrix(t_map_dimensions *map_dimensions,
 	}
 }
 
-t_list	*read_map_from_file(char *file_path)
+void	is_only_new_line(char *line, t_data *mlx)
+{
+	size_t	line_len;
+
+	if (!line || !*line)
+		return ;
+	line_len = ft_strlen(line);
+	if (*line == '\n' && line_len == 1)
+	{
+		mlx->map_components.has_empty_line = TRUE;
+		mlx->map_components.is_valid_map = FALSE;
+	}
+}
+
+t_list	*read_map_from_file(char *file_path, t_data *mlx)
 {
 	int		fd;
 	char	*map_line;
@@ -66,6 +80,7 @@ t_list	*read_map_from_file(char *file_path)
 		map_line = get_next_line(fd);
 		if (!map_line)
 			break ;
+		is_only_new_line(map_line, mlx);
 		node_map = ft_lstnew(map_line);
 		ft_lstadd_back(&head_map, node_map);
 	}
@@ -81,7 +96,7 @@ t_map_dimensions	read_map(t_data *mlx, char *map_path)
 
 	map_components_init(&mlx->map_components);
 	map_dimensions_init(&map_dimensions);
-	map_lines_list = read_map_from_file(map_path);
+	map_lines_list = read_map_from_file(map_path, mlx);
 	tmp_map_lines_list = map_lines_list;
 	is_eof = FALSE;
 	while (tmp_map_lines_list)

@@ -20,6 +20,8 @@ void	print_error(char *message)
 void	print_map_error(t_data *mlx)
 {
 	ft_printf("Error\n");
+	if (mlx->map_components.has_empty_line == TRUE)
+		ft_printf("%s\n", MAP_HAS_EMPTY_LINE_ERROR_MESSAGE);
 	if (mlx->map_components.is_rect == FALSE)
 		ft_printf("%s\n", MAP_IS_NOT_RECT_ERROR_MESSAGE);
 	if (mlx->map_components.has_minimal_components == FALSE)

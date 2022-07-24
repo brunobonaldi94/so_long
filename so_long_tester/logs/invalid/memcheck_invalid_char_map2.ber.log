@@ -1,0 +1,155 @@
+==34125== Memcheck, a memory error detector
+==34125== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==34125== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==34125== Command: ./../so_long ./maps/invalid/invalid_char_map2.ber
+==34125== Parent PID: 34100
+==34125== 
+--34125-- 
+--34125-- Valgrind options:
+--34125--    -s
+--34125--    --leak-check=full
+--34125--    --show-leak-kinds=all
+--34125--    --gen-suppressions=yes
+--34125--    --verbose
+--34125--    --log-file=logs/invalid/memcheck_invalid_char_map2.ber.log
+--34125-- Contents of /proc/version:
+--34125--   Linux version 5.4.0-94-generic (buildd@lcy02-amd64-053) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) #106-Ubuntu SMP Thu Jan 6 23:58:14 UTC 2022
+--34125-- 
+--34125-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--34125-- Page sizes: currently 4096, max supported 4096
+--34125-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--34125-- Reading syms from /home/coder/01-42Projects/05-so_long/so_longp/so_long
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--34125--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--34125--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--34125--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--34125--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--34125--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--34125--   .. CRC is valid
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--34125--    object doesn't have a symbol table
+--34125--    object doesn't have a dynamic symbol table
+--34125-- Scheduler: using generic scheduler lock implementation.
+--34125-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==34125== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-34125-by-coder-on-bbonaldi-workspace-56959bd879-q4bqv
+==34125== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-34125-by-coder-on-bbonaldi-workspace-56959bd879-q4bqv
+==34125== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-34125-by-coder-on-bbonaldi-workspace-56959bd879-q4bqv
+==34125== 
+==34125== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==34125== don't want to do, unless you know exactly what you're doing,
+==34125== or are doing some strange experiment):
+==34125==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=34125 ...command...
+==34125== 
+==34125== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==34125==   /path/to/gdb ./../so_long
+==34125== and then give GDB the following command
+==34125==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=34125
+==34125== --pid is optional if only one valgrind process is running
+==34125== 
+--34125-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--34125-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--34125--    object doesn't have a symbol table
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--34125--    object doesn't have a symbol table
+==34125== WARNING: new redirection conflicts with existing -- ignoring it
+--34125--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--34125--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--34125-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--34125-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--34125-- Reading syms from /usr/lib/libnss_wrapper.so
+--34125--   Considering /usr/lib/libnss_wrapper.so ..
+--34125--   .. CRC mismatch (computed e0dd4e53 wanted f0d8c2b3)
+--34125--   Considering /lib/libnss_wrapper.so ..
+--34125--   .. CRC mismatch (computed e0dd4e53 wanted f0d8c2b3)
+--34125--    object doesn't have a symbol table
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+--34125--   Considering /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 ..
+--34125--   .. CRC mismatch (computed 7e27e1ef wanted 4ab025b2)
+--34125--   Considering /lib/x86_64-linux-gnu/libXext.so.6.4.0 ..
+--34125--   .. CRC mismatch (computed 7e27e1ef wanted 4ab025b2)
+--34125--    object doesn't have a symbol table
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0
+--34125--    object doesn't have a symbol table
+--34125-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--34125--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--34125--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--34125--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--34125--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--34125--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--34125--   .. CRC is valid
+==34125== 
+==34125== Process terminating with default action of signal 2 (SIGINT)
+==34125==    at 0x401EF56: __open_nocancel (open64_nocancel.c:45)
+==34125==    by 0x40083BA: open_verify.constprop.0 (dl-load.c:1536)
+==34125==    by 0x4008C15: open_path (dl-load.c:1827)
+==34125==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==34125==    by 0x400F504: openaux (dl-deps.c:64)
+==34125==    by 0x401DCA9: _dl_catch_exception (dl-error-skeleton.c:208)
+==34125==    by 0x400F952: _dl_map_object_deps (dl-deps.c:248)
+==34125==    by 0x4004063: dl_main (rtld.c:1805)
+==34125==    by 0x401CC3A: _dl_sysdep_start (dl-sysdep.c:252)
+==34125==    by 0x400204B: _dl_start_final (rtld.c:449)
+==34125==    by 0x400204B: _dl_start (rtld.c:539)
+==34125==    by 0x4001107: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==34125==    by 0x1: ???
+==34125== Jump to the invalid address stated on the next line
+==34125==    at 0x1030: ???
+==34125==    by 0x40083BA: open_verify.constprop.0 (dl-load.c:1536)
+==34125==    by 0x4008C15: open_path (dl-load.c:1827)
+==34125==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==34125==    by 0x400F504: openaux (dl-deps.c:64)
+==34125==    by 0x401DCA9: _dl_catch_exception (dl-error-skeleton.c:208)
+==34125==    by 0x400F952: _dl_map_object_deps (dl-deps.c:248)
+==34125==    by 0x4004063: dl_main (rtld.c:1805)
+==34125==    by 0x401CC3A: _dl_sysdep_start (dl-sysdep.c:252)
+==34125==    by 0x400204B: _dl_start_final (rtld.c:449)
+==34125==    by 0x400204B: _dl_start (rtld.c:539)
+==34125==    by 0x4001107: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==34125==    by 0x1: ???
+==34125==  Address 0x1030 is not stack'd, malloc'd or (recently) free'd
+==34125== 
+==34125== 
+==34125== ---- Print suppression ? --- [Return/N/n/Y/y/C/c] ---- ==34125== 
+==34125== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==34125==  Bad permissions for mapped region at address 0x1030
+==34125==    at 0x1030: ???
+==34125==    by 0x40083BA: open_verify.constprop.0 (dl-load.c:1536)
+==34125==    by 0x4008C15: open_path (dl-load.c:1827)
+==34125==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==34125==    by 0x400F504: openaux (dl-deps.c:64)
+==34125==    by 0x401DCA9: _dl_catch_exception (dl-error-skeleton.c:208)
+==34125==    by 0x400F952: _dl_map_object_deps (dl-deps.c:248)
+==34125==    by 0x4004063: dl_main (rtld.c:1805)
+==34125==    by 0x401CC3A: _dl_sysdep_start (dl-sysdep.c:252)
+==34125==    by 0x400204B: _dl_start_final (rtld.c:449)
+==34125==    by 0x400204B: _dl_start (rtld.c:539)
+==34125==    by 0x4001107: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==34125==    by 0x1: ???
+==34125== 
+==34125== HEAP SUMMARY:
+==34125==     in use at exit: 0 bytes in 0 blocks
+==34125==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==34125== 
+==34125== All heap blocks were freed -- no leaks are possible
+==34125== 
+==34125== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==34125== 
+==34125== 1 errors in context 1 of 1:
+==34125== Jump to the invalid address stated on the next line
+==34125==    at 0x1030: ???
+==34125==    by 0x40083BA: open_verify.constprop.0 (dl-load.c:1536)
+==34125==    by 0x4008C15: open_path (dl-load.c:1827)
+==34125==    by 0x400A7A2: _dl_map_object (dl-load.c:2067)
+==34125==    by 0x400F504: openaux (dl-deps.c:64)
+==34125==    by 0x401DCA9: _dl_catch_exception (dl-error-skeleton.c:208)
+==34125==    by 0x400F952: _dl_map_object_deps (dl-deps.c:248)
+==34125==    by 0x4004063: dl_main (rtld.c:1805)
+==34125==    by 0x401CC3A: _dl_sysdep_start (dl-sysdep.c:252)
+==34125==    by 0x400204B: _dl_start_final (rtld.c:449)
+==34125==    by 0x400204B: _dl_start (rtld.c:539)
+==34125==    by 0x4001107: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+==34125==    by 0x1: ???
+==34125==  Address 0x1030 is not stack'd, malloc'd or (recently) free'd
+==34125== 
+==34125== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

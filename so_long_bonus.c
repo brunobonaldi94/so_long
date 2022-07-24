@@ -6,7 +6,7 @@
 /*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:36:33 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/14 01:42:03 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:44:09 by bbonaldi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	init_mlx(t_data *mlx)
 		free(mlx->win_ptr);
 		return (exit_with_message(ERROR_CODE, MLX_ERROR_MESSAGE));
 	}
+	ft_printf(GAME_START_MESSAGE);
 	return (0);
 }
 
