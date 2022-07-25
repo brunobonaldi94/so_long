@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbonaldi <bbonaldi@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:01 by bbonaldi          #+#    #+#             */
-/*   Updated: 2022/07/23 16:43:37 by bbonaldi         ###   ########.fr       */
+/*   Updated: 2022/07/25 23:26:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,20 @@ one player"
 # define MAP_HAS_EMPTY_LINE_ERROR_MESSAGE "Map has an empty line!"
 
 # define DEFAULT_PIXEL_SIZE 32
-# define IMG_WALL_PATH "../assets/images/game/wall.xpm"
-# define IMG_ENEMY_PATH "../assets/images/game/enemy.xpm"
-# define IMG_COLLECTIBLE_PATH "../assets/images/game/collectable.xpm"
-# define IMG_FLOOR_PATH "../assets/images/game/floor.xpm"
-# define IMG_PLAYER_RIGHT_PATH "../assets/images/game/player_r.xpm"
-# define IMG_PLAYER_LEFT_PATH "../assets/images/game/player_l.xpm"
-# define IMG_EXIT_PATH "../assets/images/game/exit.xpm"
-# define IMG_NUMBER_BASE_PATH "../assets/images/numbers/"
-# define IMG_NUMBER_ZERO_PATH "../assets/images/numbers/0.xpm"
-# define IMG_FOOTER_PATH "../assets/images/numbers/footer.xpm"
-# define IMG_MOVES_PATH "../assets/images/numbers/moves.xpm"
-# define IMG_DEAD_PLAYER_PATH "../assets/images/game/dead.xpm"
-# define IMG_ENEMY_RIGHT_PATH "../assets/images/game/enemy_r.xpm"
-# define IMG_ENEMY_LEFT_PATH "../assets/images/game/enemy_l.xpm"
-# define IMG_ANIMATION_BASE_PATH "../assets/images/game/animation/"
+# define IMG_WALL_PATH "./assets/images/game/wall.xpm"
+# define IMG_ENEMY_PATH "./assets/images/game/enemy.xpm"
+# define IMG_COLLECTIBLE_PATH "./assets/images/game/collectable.xpm"
+# define IMG_FLOOR_PATH "./assets/images/game/floor.xpm"
+# define IMG_PLAYER_RIGHT_PATH "./assets/images/game/player_r.xpm"
+# define IMG_PLAYER_LEFT_PATH "./assets/images/game/player_l.xpm"
+# define IMG_EXIT_PATH "./assets/images/game/exit.xpm"
+# define IMG_NUMBER_BASE_PATH "./assets/images/numbers/"
+# define IMG_NUMBER_ZERO_PATH "./assets/images/numbers/0.xpm"
+# define IMG_FOOTER_PATH "./assets/images/numbers/footer.xpm"
+# define IMG_MOVES_PATH "./assets/images/numbers/moves.xpm"
+# define IMG_DEAD_PLAYER_PATH "./assets/images/game/dead.xpm"
+# define IMG_ENEMY_RIGHT_PATH "./assets/images/game/enemy_r.xpm"
+# define IMG_ENEMY_LEFT_PATH "./assets/images/game/enemy_l.xpm"
+# define IMG_ANIMATION_BASE_PATH "./assets/images/game/animation/"
 # define IMAGE_FILE_EXTENSION ".xpm"
 #endif // SO_LONG_BONUS_H

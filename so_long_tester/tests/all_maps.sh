@@ -24,7 +24,8 @@ HEADER_INVALID="INVALID_MAPS"
 MAP_TYPE="$1"
 SHOULD_RUN_VALID_MAPS=$FALSE
 SHOULD_RUN_INVALID_MAPS=$FALSE
-BINARY_FILE=../so_long
+SO_LONG_PATH=../
+BINARY_FILE=so_long
 
 #CHECK ERRORS/SUCESS VARIABLES
 GAME_START_FLAG="Game has started!"
@@ -33,7 +34,7 @@ ERROR="Error"
 VALGRIND="valgrind -s --leak-check=full --show-leak-kinds=all --gen-suppressions=yes --verbose"
 NO_LEAK_MESSAGE="All heap blocks were freed -- no leaks are possible"
 LOG_DIR="logs"
-
+FIXED_PWD=""
 if [ -z "$MAP_TYPE" ]; then
 	echo "No argument supplied"
 	exit
@@ -83,6 +84,11 @@ print_result() {
 	fi
 }
 
+save_pwd() {
+	PWD="$(pwd)"
+	FIXED_PWD="$PWD"
+}
+
 run_test() {
 	SHOULD_RUN=$1
 	HEADER="$2"
@@ -90,7 +96,6 @@ run_test() {
 	if (($SHOULD_RUN == $FALSE)); then
 		return 0
 	fi
-
 	print_separator "$HEADER"
 	for file in $DIRECTORY/*
 	do
@@ -100,16 +105,17 @@ run_test() {
 		BASE_NAME=$(basename "$file")
 		VALID_INVALID=$(basename $DIRECTORY)
 		LOG_FILE="$LOG_DIR/$VALID_INVALID/memcheck_"$BASE_NAME".log"
+		LOG_FILE_FULL_PATH="$FIXED_PWD/$LOG_FILE"
 		print_file_name $(( COUNTER++ )) "$BASE_NAME"
-		WHOLE_OUTPUT=$($VALGRIND --log-file=$LOG_FILE ./${BINARY_FILE} "$file" )
-		HAS_ERROR=$(echo  -e $WHOLE_OUTPUT | grep  "$ERROR" | wc -l)
+		WHOLE_OUTPUT=$(cd "$SO_LONG_PATH" && $VALGRIND --log-file="$LOG_FILE_FULL_PATH" ./${BINARY_FILE} "$FIXED_PWD/$file" && cd "$FIXED_PWD")
+		HAS_ERROR=$(echo -e $WHOLE_OUTPUT | grep  "$ERROR" | wc -l)
 		IS_MLX_ERROR=$(echo -e $WHOLE_OUTPUT | grep  "$MLX_ERROR" | wc -l)
-		HAS_NO_LEAK=$(cat $LOG_FILE | grep "$NO_LEAK_MESSAGE" | wc -l)
+		HAS_NO_LEAK=$(cat "$LOG_FILE_FULL_PATH" | grep "$NO_LEAK_MESSAGE" | wc -l)
 		GAME_HAS_STARTED=$(echo -e $WHOLE_OUTPUT | grep "$GAME_START_FLAG" | wc -l)
 		print_result $HEADER $LOG_FILE
 		print_output "$WHOLE_OUTPUT"
 	done
 }
-
+save_pwd
 run_test $SHOULD_RUN_INVALID_MAPS "$HEADER_INVALID" "$INVALID_DIR"
 run_test $SHOULD_RUN_VALID_MAPS "$HEADER_VALID" "$VALID_DIR"

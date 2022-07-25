@@ -24,7 +24,8 @@ HEADER_INVALID="INVALID_MAPS"
 CURRENT_HEADER=""
 MAP_PATH="$1"
 VALID_INVALID=""
-BINARY_FILE=../so_long
+SO_LONG_PATH=../
+BINARY_FILE=so_long
 
 #CHECK ERRORS/SUCESS VARIABLES
 GAME_START_FLAG="Game has started!"
@@ -33,6 +34,7 @@ ERROR="Error"
 VALGRIND="valgrind -s --leak-check=full --show-leak-kinds=all --gen-suppressions=yes --verbose"
 NO_LEAK_MESSAGE="All heap blocks were freed -- no leaks are possible"
 LOG_DIR="logs/single"
+FIXED_PWD=""
 
 if [ -z "$MAP_PATH" ]; then
 	echo -e "$RED""No map supplied!$RESET"
@@ -86,12 +88,17 @@ print_result() {
 }
 
 recreate_single_folder() {
-	rm -rf $SINGLE_DIR/
-	mkdir $SINGLE_DIR/
+	rm -rf "$FIXED_PWD/$SINGLE_DIR/"
+	mkdir "$FIXED_PWD/$SINGLE_DIR/"
 }
 
 move_file_single_folder(){
-	cp "$MAP_PATH" $SINGLE_DIR/
+	cp "$MAP_PATH" "$FIXED_PWD/$SINGLE_DIR/"
+}
+
+save_pwd() {
+	PWD="$(pwd)"
+	FIXED_PWD="$PWD"
 }
 
 run_test() {
@@ -110,8 +117,9 @@ run_test() {
 		fi
 		BASE_NAME=$(basename "$file")
 		LOG_FILE="$LOG_DIR/memcheck_"$BASE_NAME".log"
+		LOG_FILE_FULL_PATH="$FIXED_PWD/$LOG_FILE"
 		print_file_name $(( COUNTER++ )) "$BASE_NAME"
-		WHOLE_OUTPUT=$($VALGRIND --log-file=$LOG_FILE ./${BINARY_FILE} "$file" )
+		WHOLE_OUTPUT=$(cd "$SO_LONG_PATH" && $VALGRIND --log-file="$LOG_FILE_FULL_PATH" ./${BINARY_FILE} "$FIXED_PWD/$file" && cd "$FIXED_PWD")
 		HAS_ERROR=$(echo  -e $WHOLE_OUTPUT | grep  "$ERROR" | wc -l)
 		IS_MLX_ERROR=$(echo -e $WHOLE_OUTPUT | grep  "$MLX_ERROR" | wc -l)
 		HAS_NO_LEAK=$(cat $LOG_FILE | grep "$NO_LEAK_MESSAGE" | wc -l)
@@ -121,6 +129,7 @@ run_test() {
 	done
 }
 
+save_pwd
 recreate_single_folder
 move_file_single_folder
 run_test $SHOULD_RUN_SINGLE  "$CURRENT_HEADER" $SINGLE_DIR
